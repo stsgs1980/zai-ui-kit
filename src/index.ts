@@ -40,6 +40,11 @@ export type {
   LoadingSpinnerProps,
   GlowDotProps,
   GlowDotVariant,
+  GlowButtonProps,
+  GlowVariant,
+  GlassCardProps,
+  GlassVariant,
+  AnimatedDividerProps,
   // Composite props
   InfoCardProps,
   StatCardProps,
@@ -57,4 +62,8 @@ export type {
   MetricCardProps,
   SignalBadgeProps,
   SignalType,
+  TradeButtonProps,
+  TradeSide,
+  SessionBadgeProps,
+  MarketSession,
 } from './components'
