@@ -36,6 +36,10 @@ export type {
   GlowIconProps,
   MetricValueProps,
   DividerProps,
+  DataLabelProps,
+  LoadingSpinnerProps,
+  GlowDotProps,
+  GlowDotVariant,
   // Composite props
   InfoCardProps,
   StatCardProps,
@@ -51,4 +55,6 @@ export type {
   // Financial props
   MiniCandleChartProps,
   MetricCardProps,
+  SignalBadgeProps,
+  SignalType,
 } from './components'

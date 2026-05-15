@@ -23,3 +23,12 @@ export type { MetricValueProps } from './MetricValue'
 
 export { Divider } from './Divider'
 export type { DividerProps } from './Divider'
+
+export { DataLabel } from './DataLabel'
+export type { DataLabelProps } from './DataLabel'
+
+export { LoadingSpinner } from './LoadingSpinner'
+export type { LoadingSpinnerProps } from './LoadingSpinner'
+
+export { GlowDot } from './GlowDot'
+export type { GlowDotProps, GlowDotVariant } from './GlowDot'
