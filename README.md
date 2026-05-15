@@ -98,6 +98,13 @@ function Dashboard() {
 | `Toast` | Notification toast |
 | `Toaster` | Toast container and context |
 
+### Level 4 - Financial Components
+
+| Component | Description |
+|-----------|-------------|
+| `MiniCandleChart` | Candlestick mini chart for price data |
+| `MetricCard` | Simple metric display with label/value |
+
 ## Theme System
 
 ```tsx

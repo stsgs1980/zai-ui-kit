@@ -48,4 +48,7 @@ export type {
   SectionHeaderProps,
   ToastProps,
   ToastData,
+  // Financial props
+  MiniCandleChartProps,
+  MetricCardProps,
 } from './components'
