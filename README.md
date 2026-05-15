@@ -4,20 +4,20 @@ Production-ready React UI components for dashboards and monitoring interfaces.
 
 ## Features
 
-- 🎨 **Dark theme optimized** - Designed for dark backgrounds with glow effects
-- 📦 **Tree-shakeable** - Import only what you need
-- 🎯 **TypeScript first** - Full type safety and IntelliSense
-- ⚡ **Zero dependencies** - Only peer dependencies (React, Tailwind CSS)
-- 🧩 **Composable** - Build complex UIs from simple primitives
+- **Dark theme optimized** - Designed for dark backgrounds with glow effects
+- **Tree-shakeable** - Import only what you need
+- **TypeScript first** - Full type safety and IntelliSense
+- **Zero dependencies** - Only peer dependencies (React, Tailwind CSS)
+- **Composable** - Build complex UIs from simple primitives
 
 ## Installation
 
 ```bash
-npm install @zai/ui-kit
+npm install github:stsgs1980/zai-ui-kit
 # or
-pnpm add @zai/ui-kit
+pnpm add github:stsgs1980/zai-ui-kit
 # or
-yarn add @zai/ui-kit
+yarn add github:stsgs1980/zai-ui-kit
 ```
 
 ## Peer Dependencies
@@ -131,4 +131,8 @@ const className = cn(
 
 ## License
 
-MIT © Z.AI
+MIT
+
+---
+
+**Document complies with No-Unicode Policy v2.1**
