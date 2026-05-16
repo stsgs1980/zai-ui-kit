@@ -23,9 +23,9 @@ export interface ThemeConfig {
 
 // Default theme
 export const theme: ThemeConfig = {
-  colors: await import('./colors').then(m => m.colors),
-  spacing: await import('./spacing').then(m => m.spacing),
-  radius: await import('./spacing').then(m => m.radius),
-  shadows: await import('./spacing').then(m => m.shadows),
-  animations: await import('./animations').then(m => m.animationPresets),
+  colors: colors,
+  spacing: spacing,
+  radius: radius,
+  shadows: shadows,
+  animations: animationPresets,
 }

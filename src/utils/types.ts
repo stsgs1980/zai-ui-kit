@@ -106,4 +106,4 @@ export interface ColumnDef<T = unknown> {
   render?: (value: unknown, row: T) => ReactNode
 }
 
-export default types
+

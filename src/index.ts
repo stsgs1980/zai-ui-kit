@@ -1,69 +1,67 @@
 /**
  * @zai/ui-kit
- * Production-ready React UI components for dashboards and monitoring interfaces
+ * Production-ready React UI component library
+ * Anti-monolith architecture: ui/ → sections/ → features/ → domain/
+ *
+ * Layer rules:
+ *   ui/      — L1 atoms, pure presentation, NO state, NO hooks
+ *   sections/— L2 molecules, compose L1, NO own state
+ *   features/— L3 organisms, HAVE own state and hooks
+ *   domain/  — L4 domain-specific, frozen combinations
+ *   hooks/   — stateful logic, no JSX
+ *
+ * Dependencies flow strictly DOWNWARD:
+ *   ui → sections → features → domain
+ *   hooks can be used by features and domain
  *
  * @packageDocumentation
  */
 
-// Components
-export * from './components'
-
-// Theme system
+// ─── Theme System (export first) ─────────────────────────────
 export * from './theme'
-
-// Utilities
-export * from './utils'
-
-// Re-export commonly used items for convenience
-export { cn } from './utils/cn'
 export { colors } from './theme/colors'
 export { spacing, radius, shadows } from './theme/spacing'
 export { duration, easing, animationPresets } from './theme/animations'
 
-// Type exports
+// ─── Utilities ───────────────────────────────────────────────
+export { cn } from './utils/cn'
 export type {
-  // Basic types
+  BaseProps,
+  WithChildren,
+  WithClassName,
+  WithStyle,
+  ComponentProps,
   Size,
   SizeSmMdLg,
   Status,
   Variant,
   TrendDirection,
-  // Component props
-  StatusDotProps,
-  ProgressBarProps,
-  BadgeProps,
-  TrendIndicatorProps,
-  GlowIconProps,
-  MetricValueProps,
-  DividerProps,
-  DataLabelProps,
-  LoadingSpinnerProps,
-  GlowDotProps,
-  GlowDotVariant,
-  GlowButtonProps,
-  GlowVariant,
-  GlassCardProps,
-  GlassVariant,
-  AnimatedDividerProps,
-  // Composite props
-  InfoCardProps,
-  StatCardProps,
-  GaugeMeterProps,
-  MiniChartProps,
-  DataTableProps,
-  KeyValueListProps,
-  // Ready props
-  HUDCardProps,
-  SectionHeaderProps,
-  ToastProps,
-  ToastData,
-  // Financial props
-  MiniCandleChartProps,
-  MetricCardProps,
-  SignalBadgeProps,
-  SignalType,
-  TradeButtonProps,
-  TradeSide,
-  SessionBadgeProps,
-  MarketSession,
-} from './components'
+  ColorSpec,
+  AnimationState,
+  Position,
+  CornerPosition,
+  ClickHandler,
+  ChangeHandler,
+  AsyncState,
+  AsProp,
+  PolymorphicComponentProps,
+  IconProps,
+  DataPoint,
+  KeyValue,
+  ColumnDef,
+} from './utils/types'
+
+// ─── L1 Atoms (ui/) ─────────────────────────────────────────
+export * from './ui'
+
+// ─── L2 Molecules (sections/) ───────────────────────────────
+export * from './sections'
+
+// ─── L3 Organisms (features/) ───────────────────────────────
+export * from './features'
+
+// ─── L4 Domain (domain/) ────────────────────────────────────
+export * from './domain'
+
+// ─── Hooks ───────────────────────────────────────────────────
+export * from './hooks'
