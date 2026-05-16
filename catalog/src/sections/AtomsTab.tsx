@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { BRAND, CELL_COLORS, TOKENS, type TokenData } from '../../data/layout-data'
-import { parseFrOrPx } from '../../utils/codeGen'
+import { BRAND, CELL_COLORS, TOKENS, type TokenData } from '../data/layout-data'
+import { parseFrOrPx } from '../utils/codeGen'
 
 // ── Atoms Tab — no own state, pure composition ────────────────
 

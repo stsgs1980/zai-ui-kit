@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { BRAND, CATEGORIES, type PatternData } from '../../data/layout-data'
+import { BRAND, CATEGORIES, type PatternData } from '../data/layout-data'
 import { GridPreview } from './GridPreview'
 import { TokenBadge } from './TokenBadge'
 

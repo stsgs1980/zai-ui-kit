@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { BRAND, TOKENS } from '../../data/layout-data'
+import { BRAND, TOKENS } from '../data/layout-data'
 
 export function TokenBadge({ tokenId }: { tokenId: string }) {
   const token = TOKENS.find(t => t.id === tokenId)

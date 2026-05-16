@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { BRAND } from '../../data/layout-data'
-import type { Tab } from '../../hooks/useCatalogFilters'
+import { BRAND } from '../data/layout-data'
+import type { Tab } from '../hooks/useCatalogFilters'
 
 interface CatalogTabsProps {
   tab: Tab

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { BRAND, PATTERNS, patternToRegistry } from '../../data/layout-data'
-import { generateCode } from '../../utils/codeGen'
+import { BRAND, PATTERNS, patternToRegistry } from '../data/layout-data'
+import { generateCode } from '../utils/codeGen'
 import { GridPreview } from '../ui/GridPreview'
 import { TokenBadge } from '../ui/TokenBadge'
 

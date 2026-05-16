@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { BRAND, PATTERNS, TOKENS } from '../../data/layout-data'
+import { BRAND, PATTERNS, TOKENS } from '../data/layout-data'
 
 export function CatalogHeader() {
   return (

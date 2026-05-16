@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { BRAND, PATTERNS, patternToRegistry } from '../../data/layout-data'
-import { generateCode } from '../../utils/codeGen'
+import { BRAND, PATTERNS, patternToRegistry } from '../data/layout-data'
+import { generateCode } from '../utils/codeGen'
 
 // ── Registry Tab — has own state (selected pattern) ───────────
 
