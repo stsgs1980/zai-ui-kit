@@ -4,7 +4,7 @@
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { SizeSmMdLg, Variant, WithChildren } from '../utils/types'
 
 export interface BadgeProps extends WithChildren {
@@ -31,30 +31,30 @@ export interface BadgeProps extends WithChildren {
 }
 
 const sizeMap = {
-  sm: 'px-2 py-0.5 text-xs',
-  md: 'px-2.5 py-1 text-sm',
-  lg: 'px-3 py-1.5 text-base',
+  sm: 'px-2 py-0.5 text-xs',         // TODO: Add token for 2px/0.5px padding
+  md: 'px-2.5 py-1 text-sm',         // TODO: Add token for 2.5px/1px padding
+  lg: 'px-3 py-1.5 text-base',       // px-3 = 12px = space-3, py-1.5 = 6px — TODO for 1.5
 } as const
 
-/** Map variant → text color from palette */
+/** Map variant → text color from token */
 const variantTextMap: Record<Variant, string> = {
-  primary: colors.neutral.base,    // #E6E6E6
-  secondary: colors.neutral.v1,    // #CCCCCC
-  success: colors.neutral.v2,      // #BFBFBF
-  warning: colors.neutral.v3,      // #878992
-  danger: colors.neutral.v4,       // #5C6070
-  info: colors.neutral.v1,         // #CCCCCC
-  neutral: colors.neutral.v3,      // #878992
+  primary: tv('COLOR_NEUTRAL_BASE'),
+  secondary: tv('COLOR_NEUTRAL_V1'),
+  success: tv('COLOR_NEUTRAL_V2'),
+  warning: tv('COLOR_NEUTRAL_V3'),
+  danger: tv('COLOR_NEUTRAL_V4'),
+  info: tv('COLOR_NEUTRAL_V1'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
 }
 
 const variantDotMap: Record<Variant, string> = {
-  primary: colors.neutral.base,
-  secondary: colors.neutral.v1,
-  success: colors.neutral.v2,
-  warning: colors.neutral.v3,
-  danger: colors.neutral.v4,
-  info: colors.neutral.v1,
-  neutral: colors.neutral.v3,
+  primary: tv('COLOR_NEUTRAL_BASE'),
+  secondary: tv('COLOR_NEUTRAL_V1'),
+  success: tv('COLOR_NEUTRAL_V2'),
+  warning: tv('COLOR_NEUTRAL_V3'),
+  danger: tv('COLOR_NEUTRAL_V4'),
+  info: tv('COLOR_NEUTRAL_V1'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
 }
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
@@ -81,7 +81,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
         ref={ref}
         onClick={onClick}
         className={cn(
-          'inline-flex items-center gap-1.5 rounded-full font-medium',
+          'inline-flex items-center gap-1.5 rounded-[var(--zai-radius-full)] font-medium',  // TODO: Add token for 1.5 gap (6px)
           sizeMap[size],
           clickable && 'cursor-pointer transition-colors hover:opacity-80',
           className
@@ -94,7 +94,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       >
         {dot && (
           <span
-            className="h-1.5 w-1.5 rounded-full"
+            className="h-1.5 w-1.5 rounded-[var(--zai-radius-full)]"  // TODO: Add token for dot size in badge
             style={{ backgroundColor: dotColor }}
           />
         )}

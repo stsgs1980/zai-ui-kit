@@ -1,0 +1,158 @@
+/**
+ * @zai/ui-kit — Skin: Dark ZAI
+ * Default dark theme with neutral palette
+ * Base: #E6E6E6, V1: #CCCCCC, V2: #BFBFBF, V3: #878992, V4: #5C6070
+ *
+ * Usage: import '@zai/ui-kit/skins/dark-zai.css'
+ */
+:root {
+  /* ── Neutral scale ────────────────────────────────────── */
+  --zai-color-neutral-base: #E6E6E6;
+  --zai-color-neutral-v1: #CCCCCC;
+  --zai-color-neutral-v2: #BFBFBF;
+  --zai-color-neutral-v3: #878992;
+  --zai-color-neutral-v4: #5C6070;
+
+  /* ── Semantic text ────────────────────────────────────── */
+  --zai-color-text-primary: #E6E6E6;
+  --zai-color-text-secondary: #CCCCCC;
+  --zai-color-text-muted: #878992;
+  --zai-color-text-disabled: #5C6070;
+  --zai-color-text-inverse: #0a0a0f;
+
+  /* ── Backgrounds ──────────────────────────────────────── */
+  --zai-color-bg-primary: #0a0a0f;
+  --zai-color-bg-secondary: #111118;
+  --zai-color-bg-tertiary: #1a1a24;
+  --zai-color-bg-card: #15151f;
+  --zai-color-bg-elevated: #1e1e2a;
+  --zai-color-bg-surface: #2a2c36;
+  --zai-color-bg-overlay: rgba(0, 0, 0, 0.8);
+
+  /* ── Borders ──────────────────────────────────────────── */
+  --zai-color-border-default: #5C6070;
+  --zai-color-border-muted: rgba(92, 96, 112, 0.5);
+  --zai-color-border-subtle: rgba(92, 96, 112, 0.25);
+  --zai-color-border-focus: #CCCCCC;
+
+  /* ── Status ───────────────────────────────────────────── */
+  --zai-color-status-online: #E6E6E6;
+  --zai-color-status-offline: #5C6070;
+  --zai-color-status-warning: #878992;
+  --zai-color-status-error: #5C6070;
+  --zai-color-status-success: #BFBFBF;
+  --zai-color-status-info: #CCCCCC;
+
+  /* ── Accent ───────────────────────────────────────────── */
+  --zai-color-accent: #E6E6E6;
+  --zai-color-accent-muted: rgba(230, 230, 230, 0.15);
+
+  /* ── Fibonacci spacing ────────────────────────────────── */
+  --zai-space-0: 0;
+  --zai-space-1: 4px;      /* Fib(1) × 4 */
+  --zai-space-2: 8px;      /* Fib(2) × 4 */
+  --zai-space-3: 12px;     /* Fib(3) × 4 */
+  --zai-space-5: 20px;     /* Fib(4) × 4 */
+  --zai-space-8: 32px;     /* Fib(5) × 4 */
+  --zai-space-13: 52px;    /* Fib(6) × 4 */
+  --zai-space-21: 84px;    /* Fib(7) × 4 */
+
+  /* Component spacing (derived) */
+  --zai-space-card-sm: var(--zai-space-3);
+  --zai-space-card-md: var(--zai-space-5);
+  --zai-space-card-lg: var(--zai-space-8);
+  --zai-space-section-sm: var(--zai-space-5);
+  --zai-space-section-md: var(--zai-space-8);
+  --zai-space-section-lg: var(--zai-space-13);
+  --zai-space-element-xs: var(--zai-space-1);
+  --zai-space-element-sm: var(--zai-space-2);
+  --zai-space-element-md: var(--zai-space-3);
+  --zai-space-element-lg: var(--zai-space-5);
+
+  /* ── Radius ───────────────────────────────────────────── */
+  --zai-radius-none: 0;
+  --zai-radius-sm: 2px;
+  --zai-radius-default: 4px;
+  --zai-radius-md: 6px;
+  --zai-radius-lg: 8px;
+  --zai-radius-xl: 12px;
+  --zai-radius-full: 9999px;
+
+  /* ── Shadows ──────────────────────────────────────────── */
+  --zai-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --zai-shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.5);
+  --zai-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --zai-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --zai-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --zai-shadow-glow: 0 0 20px rgba(230, 230, 230, 0.3);
+
+  /* ── Glass effects ────────────────────────────────────── */
+  --zai-glass-bg: rgba(3, 3, 8, 0.8);
+  --zai-glass-border: rgba(230, 230, 230, 0.06);
+  --zai-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 4px 24px rgba(0, 0, 0, 0.4);
+  --zai-glass-blur: 20px;
+  --zai-glass-saturate: 1.2;
+  --zai-glass-opacity: 0.8;
+
+  /* ── Glow effects ─────────────────────────────────────── */
+  --zai-glow-color: 230, 230, 230;
+  --zai-glow-spread: 20px;
+  --zai-glow-opacity: 0.3;
+  --zai-glow-shadow: 0 0 var(--zai-glow-spread) rgba(var(--zai-glow-color), var(--zai-glow-opacity));
+
+  /* ── Motion ───────────────────────────────────────────── */
+  --zai-duration-instant: 0ms;
+  --zai-duration-fast: 150ms;
+  --zai-duration-normal: 300ms;
+  --zai-duration-slow: 500ms;
+  --zai-easing-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --zai-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --zai-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --zai-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --zai-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ── Typography (Fibonacci modular scale, base 16px) ─── */
+  --zai-font-size-1: 0.75rem;   /* 12px */
+  --zai-font-size-2: 0.875rem;  /* 14px */
+  --zai-font-size-3: 1rem;      /* 16px - base */
+  --zai-font-size-4: 1.125rem;  /* 18px */
+  --zai-font-size-5: 1.5rem;    /* 24px */
+  --zai-font-size-6: 2rem;      /* 32px */
+  --zai-font-size-7: 3rem;      /* 48px */
+
+  --zai-font-weight-normal: 400;
+  --zai-font-weight-medium: 500;
+  --zai-font-weight-semibold: 600;
+  --zai-font-weight-bold: 700;
+
+  --zai-line-height-tight: 1.25;
+  --zai-line-height-normal: 1.5;
+  --zai-line-height-relaxed: 1.75;
+
+  /* ── Layout (golden ratio) ────────────────────────────── */
+  --zai-phi: 1.618;
+  --zai-phi-inv: 0.618;
+  --zai-grid-cols-golden: 1fr 1.618fr;
+  --zai-grid-cols-fibonacci: 1fr 2fr 3fr 5fr;
+  --zai-grid-gap: var(--zai-space-5);      /* Fib(4) = 20px */
+  --zai-grid-gap-sm: var(--zai-space-3);   /* Fib(3) = 12px */
+  --zai-grid-gap-lg: var(--zai-space-8);   /* Fib(5) = 32px */
+
+  /* ── Z-index ──────────────────────────────────────────── */
+  --zai-z-dropdown: 1000;
+  --zai-z-sticky: 1020;
+  --zai-z-fixed: 1030;
+  --zai-z-modal: 1050;
+  --zai-z-popover: 1060;
+  --zai-z-tooltip: 1070;
+  --zai-z-toast: 1080;
+
+  /* ── Component-specific ───────────────────────────────── */
+  --zai-progress-height: 6px;
+  --zai-progress-radius: var(--zai-radius-full);
+  --zai-badge-padding-x: var(--zai-space-2);
+  --zai-badge-padding-y: var(--zai-space-1);
+  --zai-badge-radius: var(--zai-radius-full);
+  --zai-dot-size: 8px;
+  --zai-divider-thickness: 1px;
+}

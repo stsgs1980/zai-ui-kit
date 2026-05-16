@@ -2,12 +2,12 @@
  * GlassCard - Glassmorphism card component with blur and transparency
  * Extracted from CHROMEDNA patterns
  *
- * Colors sourced from centralized palette (colors.neutral.*, colors.background.*)
+ * Tokens used for glass effects, text colors, radius, motion.
  */
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { WithChildren, WithClassName, Variant } from '../utils/types'
 import {
   getGlassCSSProps,
@@ -33,7 +33,7 @@ export interface GlassCardProps extends WithChildren, WithClassName {
   /** Enable border glow */
   glow?: boolean
   /** Glow color variant */
-  glowVariant?: Variant
+  glowVariant?: Variant | 'amber' | 'green' | 'red' | 'blue' | 'error'
   /** Padding size */
   padding?: 'none' | 'sm' | 'md' | 'lg'
   /** Add noise texture overlay */
@@ -64,11 +64,11 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
       <div
         ref={ref}
         className={cn(
-          'relative rounded-lg overflow-hidden',
+          'relative rounded-[var(--zai-radius-lg)] overflow-hidden',
           'bg-[var(--glass-bg)] border border-[var(--glass-border)]',
           glassBlurStyles[variant],
           paddingStyles[padding],
-          hoverable && 'transition-all duration-300',
+          hoverable && 'transition-all',
           hoverable && glow && 'hover:border-[var(--glow-border-hover)] hover:shadow-[var(--glow-shadow-hover)]',
           className
         )}
@@ -76,12 +76,13 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
           ...glassCSS,
           ...glowCSS,
           ...(variant !== 'default' ? { boxShadow: 'var(--glass-shadow)' } : {}),
+          ...(hoverable ? { transitionDuration: tv('DURATION_NORMAL'), transitionTimingFunction: tv('EASING_OUT') } : {}),
         }}
       >
         {/* Noise overlay */}
         {noise && (
           <div
-            className="absolute inset-0 rounded-lg opacity-[0.018] pointer-events-none z-10"
+            className="absolute inset-0 rounded-[var(--zai-radius-lg)] opacity-[0.018] pointer-events-none z-10"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
               backgroundSize: '128px 128px',
@@ -91,11 +92,11 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
 
         {/* Header */}
         {(title || actions) && (
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-[var(--zai-space-5)]">
             {title && (
-              <h3 className="text-sm font-semibold" style={{ color: colors.text.primary }}>{title}</h3>
+              <h3 className="text-sm font-semibold" style={{ color: tv('COLOR_TEXT_PRIMARY') }}>{title}</h3>
             )}
-            {actions && <div className="flex items-center gap-2">{actions}</div>}
+            {actions && <div className="flex items-center gap-[var(--zai-space-element-sm)]">{actions}</div>}
           </div>
         )}
 
@@ -104,7 +105,12 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
 
         {/* Footer */}
         {footer && (
-          <div className="mt-4 pt-4" style={{ borderTopColor: `rgba(${colors.neutralRgb.base}, 0.06)`, borderTopWidth: 1 }}>{footer}</div>
+          <div
+            className="mt-[var(--zai-space-5)] pt-[var(--zai-space-5)]"
+            style={{ borderTopColor: tv('GLASS_BORDER'), borderTopWidth: 1 }}
+          >
+            {footer}
+          </div>
         )}
       </div>
     )

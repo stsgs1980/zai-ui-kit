@@ -2,6 +2,11 @@
  * ZAI UI Kit - Color System
  * Centralized color definitions for consistent theming
  *
+ * @deprecated Use the token system instead.
+ *   Import TOKEN / tv from '@zai/ui-kit/tokens' and use CSS custom properties.
+ *   Skin CSS files (e.g. skins/dark-zai.css) provide the actual values.
+ *   This module is kept for backward compatibility and will be removed in v2.
+ *
  * Neutral scale (applied across the entire kit):
  *   base #E6E6E6  — primary text, bright elements
  *   v1   #CCCCCC  — secondary text

@@ -2,7 +2,7 @@
  * TechMarker - Small numbered section marker with tooltip
  *
  * Layer: L1 (ui/atom)
- * Imports only from: ../ui/SimpleTooltip (sibling), ../utils/, ../theme/
+ * Imports only from: ../ui/SimpleTooltip (sibling), ../utils/, ../tokens/
  */
 
 import { forwardRef } from 'react'
@@ -25,16 +25,23 @@ export const TechMarker = forwardRef<HTMLDivElement, TechMarkerProps>(
         <div
           ref={ref}
           className={cn(
-            'flex items-center gap-1 font-mono text-[9px] text-neutral-400 cursor-help',
+            'flex items-center gap-[var(--zai-space-element-xs)] font-mono text-[9px] cursor-help',  // TODO: Add token for 9px font size
             className
           )}
+          style={{ color: 'var(--zai-color-text-muted)' }}
         >
-          <div className="w-2 h-2 border border-neutral-400 rounded-full flex items-center justify-center">
-            <div className="w-0.5 h-0.5 bg-neutral-400 rounded-full" />
+          <div
+            className="w-2 h-2 rounded-[var(--zai-radius-full)] flex items-center justify-center"
+            style={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--zai-color-text-muted)' }}
+          >
+            <div
+              className="w-0.5 h-0.5 rounded-[var(--zai-radius-full)]"
+              style={{ backgroundColor: 'var(--zai-color-text-muted)' }}
+            />
           </div>
           <span className="tracking-wider">{number}</span>
           {size && (
-            <span className="text-neutral-300 ml-0.5">[{size}]</span>
+            <span style={{ color: 'var(--zai-color-border-subtle)', marginLeft: 'var(--zai-space-1)' }}>[{size}]</span>
           )}
         </div>
       </SimpleTooltip>

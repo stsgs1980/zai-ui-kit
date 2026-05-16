@@ -4,8 +4,8 @@
 
 import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
-import type { Variant, SizeSmMdLg, WithClassName, DataPoint } from '../utils/types'
+import { tv } from '../tokens'
+import type { Variant, SizeSmMdLg, WithClassName } from '../utils/types'
 import { sizeHeightMap, variantColorMap } from './MiniChart.helpers'
 
 export interface MiniChartProps extends WithClassName {
@@ -127,7 +127,7 @@ export const MiniChart = forwardRef<HTMLDivElement, MiniChartProps>(
                     cy={p.y}
                     r={3}
                     fill={chartColor}
-                    stroke={colors.neutral.base}
+                    stroke={tv('COLOR_NEUTRAL_BASE')}
                     strokeWidth={1}
                   />
                 ))}

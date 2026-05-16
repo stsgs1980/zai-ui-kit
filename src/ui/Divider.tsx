@@ -2,9 +2,9 @@
  * Divider - Visual separator for content sections
  */
 
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { WithChildren, WithClassName } from '../utils/types'
 
 export interface DividerProps extends WithChildren, WithClassName {
@@ -22,14 +22,14 @@ export interface DividerProps extends WithChildren, WithClassName {
 
 const spacingMap = {
   horizontal: {
-    sm: 'my-2',
-    md: 'my-4',
-    lg: 'my-6',
+    sm: 'my-[var(--zai-space-element-sm)]',   // 8px
+    md: 'my-4',   // TODO: Add token for 16px spacing
+    lg: 'my-6',   // TODO: Add token for 24px spacing
   },
   vertical: {
-    sm: 'mx-2',
-    md: 'mx-4',
-    lg: 'mx-6',
+    sm: 'mx-[var(--zai-space-element-sm)]',   // 8px
+    md: 'mx-4',   // TODO: Add token for 16px spacing
+    lg: 'mx-6',   // TODO: Add token for 24px spacing
   },
 }
 
@@ -54,26 +54,26 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
     ref
   ) => {
     const isHorizontal = orientation === 'horizontal'
-    const borderColor = color ?? colors.border.default
+    const borderColor = color ?? tv('COLOR_BORDER_DEFAULT')
 
     if (labeled && children) {
       return (
         <div
           ref={ref}
           className={cn(
-            'flex items-center gap-4',
+            'flex items-center gap-4',   // TODO: Add token for 16px gap
             spacingMap.horizontal[spacing],
             className
           )}
         >
           <div
             className={cn('flex-1 border-t', variantStyles[variant])}
-            style={{ borderColor, ...(variant === 'gradient' ? { backgroundImage: `linear-gradient(to right, transparent, ${colors.neutral.v4}, transparent)`, height: 1 } : {}) }}
+            style={{ borderColor, ...(variant === 'gradient' ? { backgroundImage: `linear-gradient(to right, transparent, ${tv('COLOR_NEUTRAL_V4')}, transparent)`, height: tv('DIVIDER_THICKNESS') } : {}) }}
           />
-          <span className="flex-shrink-0 text-sm" style={{ color: colors.neutral.v3 }}>{children}</span>
+          <span className="flex-shrink-0 text-sm" style={{ color: tv('COLOR_NEUTRAL_V3') }}>{children}</span>
           <div
             className={cn('flex-1 border-t', variantStyles[variant])}
-            style={{ borderColor, ...(variant === 'gradient' ? { backgroundImage: `linear-gradient(to right, transparent, ${colors.neutral.v4}, transparent)`, height: 1 } : {}) }}
+            style={{ borderColor, ...(variant === 'gradient' ? { backgroundImage: `linear-gradient(to right, transparent, ${tv('COLOR_NEUTRAL_V4')}, transparent)`, height: tv('DIVIDER_THICKNESS') } : {}) }}
           />
         </div>
       )
@@ -91,7 +91,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
           variantStyles[variant],
           className
         )}
-        style={{ borderColor, ...(variant === 'gradient' ? { backgroundImage: `linear-gradient(to right, transparent, ${colors.neutral.v4}, transparent)`, height: 1, border: 'none' } : {}) }}
+        style={{ borderColor, ...(variant === 'gradient' ? { backgroundImage: `linear-gradient(to right, transparent, ${tv('COLOR_NEUTRAL_V4')}, transparent)`, height: tv('DIVIDER_THICKNESS'), border: 'none' } : {}) }}
       />
     )
   }

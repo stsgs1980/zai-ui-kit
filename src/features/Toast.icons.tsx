@@ -3,10 +3,10 @@
  */
 
 import type { ReactNode } from 'react'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { Variant } from '../utils/types'
 
-/** Map variant → neutral palette key for border tint */
+/** Map variant → neutral palette key for border tint (kept for semantic reference) */
 export const variantBorderKey: Record<Variant, 'base' | 'v1' | 'v2' | 'v3' | 'v4'> = {
   primary: 'base',
   secondary: 'v1',
@@ -17,15 +17,26 @@ export const variantBorderKey: Record<Variant, 'base' | 'v1' | 'v2' | 'v3' | 'v4
   neutral: 'v3',
 }
 
-/** Map variant → icon color from palette */
+/** Map variant → icon color via tokens */
 export const variantIconColor: Record<Variant, string> = {
-  primary: colors.neutral.base,
-  secondary: colors.neutral.v1,
-  success: colors.neutral.v2,
-  warning: colors.neutral.v3,
-  danger: colors.neutral.v4,
-  info: colors.neutral.v1,
-  neutral: colors.neutral.v3,
+  primary: tv('COLOR_NEUTRAL_BASE'),
+  secondary: tv('COLOR_NEUTRAL_V1'),
+  success: tv('COLOR_NEUTRAL_V2'),
+  warning: tv('COLOR_NEUTRAL_V3'),
+  danger: tv('COLOR_NEUTRAL_V4'),
+  info: tv('COLOR_NEUTRAL_V1'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
+}
+
+/** Map variant → border color with alpha via color-mix */
+export const variantBorderColor: Record<Variant, string> = {
+  primary: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 25%, transparent)`,
+  secondary: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 25%, transparent)`,
+  success: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V2')} 25%, transparent)`,
+  warning: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 25%, transparent)`,
+  danger: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V4')} 25%, transparent)`,
+  info: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 25%, transparent)`,
+  neutral: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 25%, transparent)`,
 }
 
 export const variantIconMap: Record<Variant, ReactNode> = {

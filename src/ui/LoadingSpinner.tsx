@@ -4,7 +4,8 @@
 
 import { forwardRef } from 'react';
 import { cn } from '../utils/cn';
-import { colors } from '../theme/colors';
+import { tv } from '../tokens';
+import { colors } from '../theme/colors';  // TODO: Remove when neutral RGB tokens are available
 
 export interface LoadingSpinnerProps {
   /** Spinner size */
@@ -20,23 +21,24 @@ export interface LoadingSpinnerProps {
 export const LoadingSpinner = forwardRef<HTMLDivElement, LoadingSpinnerProps>(
   ({ size = 'md', color, borderColor, className }, ref) => {
     const sizeMap = {
-      sm: 'w-4 h-4',
-      md: 'w-8 h-8',
-      lg: 'w-12 h-12',
-      xl: 'w-16 h-16',
+      sm: 'w-4 h-4',     // TODO: Add token for sm spinner size
+      md: 'w-8 h-8',     // TODO: Add token for md spinner size
+      lg: 'w-12 h-12',   // TODO: Add token for lg spinner size
+      xl: 'w-16 h-16',   // TODO: Add token for xl spinner size
     };
 
     return (
       <div
         ref={ref}
         className={cn(
-          'rounded-full border-2 animate-spin',
+          'rounded-[var(--zai-radius-full)] border-2 animate-spin',  // TODO: Add token for border-width
           sizeMap[size],
           className
         )}
         style={{
+          // TODO: Add token for neutral.v3 at 30% alpha
           borderColor: borderColor || `rgba(${colors.neutralRgb.v3}, 0.3)`,
-          borderTopColor: color || colors.neutral.base,
+          borderTopColor: color || tv('COLOR_NEUTRAL_BASE'),
         }}
       />
     );

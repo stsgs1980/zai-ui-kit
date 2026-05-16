@@ -23,10 +23,16 @@
       "import": "./dist/utils/index.js",
       "types": "./dist/utils/index.d.ts"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./skins/*": "./src/skins/*",
+    "./tokens": {
+      "import": "./dist/tokens/index.js",
+      "types": "./dist/tokens/index.d.ts"
+    }
   },
   "files": [
     "dist",
+    "src/skins",
     "README.md"
   ],
   "scripts": {

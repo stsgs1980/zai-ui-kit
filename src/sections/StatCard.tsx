@@ -4,7 +4,7 @@
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import { MetricValue } from '../ui/MetricValue'
 import { TrendIndicator } from '../ui/TrendIndicator'
 import type { SizeSmMdLg, TrendDirection, Variant, WithClassName } from '../utils/types'
@@ -66,20 +66,21 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
         ref={ref}
         onClick={onClick}
         className={cn(
-          'rounded-lg border p-4 backdrop-blur-sm',
+          'rounded-[var(--zai-radius-lg)] border p-[var(--zai-space-card-md)] backdrop-blur-sm',
           glow && 'shadow-[0_0_20px_var(--stat-glow)]',
           onClick && 'cursor-pointer transition-all',
           className
         )}
         style={{
-          '--stat-glow': `rgba(${colors.neutralRgb.base}, 0.06)`,
-          borderColor: colors.border.subtle,
-          backgroundColor: colors.background.primaryA50,
+          // TODO: TOKEN-SEC — no token for dynamic rgba glow; consider adding --zai-glow-* per variant
+          '--stat-glow': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 6%, transparent)`,
+          borderColor: tv('COLOR_BORDER_SUBTLE'),
+          backgroundColor: tv('COLOR_BG_CARD'),
         } as React.CSSProperties}
       >
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <p className="text-sm" style={{ color: colors.text.secondary }}>{label}</p>
+            <p className="text-sm" style={{ color: tv('COLOR_TEXT_SECONDARY') }}>{label}</p>
             <MetricValue
               value={value}
               unit={unit}
@@ -91,11 +92,11 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
               className="mt-1"
             />
             {comparison && (
-              <p className="mt-1 text-xs" style={{ color: colors.neutral.v3 }}>{comparison}</p>
+              <p className="mt-1 text-xs" style={{ color: tv('COLOR_NEUTRAL_V3') }}>{comparison}</p>
             )}
           </div>
           {icon && (
-            <div className="flex-shrink-0" style={{ color: colors.neutral.v3 }}>{icon}</div>
+            <div className="flex-shrink-0" style={{ color: tv('COLOR_NEUTRAL_V3') }}>{icon}</div>
           )}
         </div>
 

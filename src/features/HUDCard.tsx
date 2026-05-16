@@ -1,12 +1,12 @@
 /**
  * HUDCard - HUD-style card with animated borders and glow
  *
- * Colors sourced from centralized palette (colors.neutral.*)
+ * Colors sourced from token system (tv() + color-mix())
  */
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { WithChildren, WithClassName, Variant } from '../utils/types'
 
 export interface HUDCardProps extends WithChildren, WithClassName {
@@ -27,32 +27,21 @@ export interface HUDCardProps extends WithChildren, WithClassName {
 }
 
 const sizePaddingMap = {
-  sm: 'p-3',
-  md: 'p-4',
-  lg: 'p-5',
-  xl: 'p-6',
+  sm: 'p-[var(--zai-space-card-sm)]',
+  md: 'p-[var(--zai-space-card-md)]',
+  lg: 'p-[var(--zai-space-5)]',
+  xl: 'p-[var(--zai-space-card-lg)]',
 }
 
-/** Map variant → neutral palette key for glow */
-const variantGlowKey: Record<Variant, 'base' | 'v1' | 'v2' | 'v3' | 'v4'> = {
-  primary: 'base',    // #E6E6E6
-  secondary: 'v1',    // #CCCCCC
-  success: 'v2',      // #BFBFBF
-  warning: 'v3',      // #878992
-  danger: 'v4',       // #5C6070
-  info: 'v1',         // #CCCCCC
-  neutral: 'v3',      // #878992
-}
-
-/** Map variant → glow alpha */
-const variantGlowAlpha: Record<Variant, number> = {
-  primary: 0.08,
-  secondary: 0.08,
-  success: 0.08,
-  warning: 0.08,
-  danger: 0.1,
-  info: 0.08,
-  neutral: 0.08,
+/** Map variant → glow color via color-mix */
+const variantGlowMap: Record<Variant, string> = {
+  primary: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 8%, transparent)`,
+  secondary: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 8%, transparent)`,
+  success: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_V2')} 8%, transparent)`,
+  warning: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 8%, transparent)`,
+  danger: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_V4')} 10%, transparent)`,
+  info: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 8%, transparent)`,
+  neutral: `0 0 20px color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 8%, transparent)`,
 }
 
 export const HUDCard = forwardRef<HTMLDivElement, HUDCardProps>(
@@ -70,46 +59,42 @@ export const HUDCard = forwardRef<HTMLDivElement, HUDCardProps>(
     },
     ref
   ) => {
-    const glowKey = variantGlowKey[variant]
-    const glowRgb = colors.neutralRgb[glowKey]
-    const glowAlpha = variantGlowAlpha[variant]
-
     return (
       <div
         ref={ref}
         onClick={onClick}
         className={cn(
-          'relative overflow-hidden rounded-lg border backdrop-blur-sm',
+          'relative overflow-hidden rounded-[var(--zai-radius-lg)] border backdrop-blur-sm',
           sizePaddingMap[size],
           onClick && 'cursor-pointer transition-transform hover:scale-[1.01]',
           className
         )}
         style={{
-          borderColor: colors.border.subtle,
-          backgroundColor: colors.background.primaryA80,
-          boxShadow: glow ? `0 0 20px rgba(${glowRgb}, ${glowAlpha})` : undefined,
+          borderColor: tv('COLOR_BORDER_SUBTLE'),
+          backgroundColor: tv('GLASS_BG'),
+          boxShadow: glow ? variantGlowMap[variant] : undefined,
         }}
       >
         {/* Animated corner accents */}
         {animated && (
           <>
-            <div className="absolute left-0 top-0 h-8 w-px" style={{ backgroundImage: `linear-gradient(to bottom, rgba(${colors.neutralRgb.base}, 0.3), transparent)` }} />
-            <div className="absolute left-0 top-0 h-px w-8" style={{ backgroundImage: `linear-gradient(to right, rgba(${colors.neutralRgb.base}, 0.3), transparent)` }} />
-            <div className="absolute bottom-0 right-0 h-8 w-px" style={{ backgroundImage: `linear-gradient(to top, rgba(${colors.neutralRgb.base}, 0.3), transparent)` }} />
-            <div className="absolute bottom-0 right-0 h-px w-8" style={{ backgroundImage: `linear-gradient(to left, rgba(${colors.neutralRgb.base}, 0.3), transparent)` }} />
+            <div className="absolute left-0 top-0 h-8 w-px" style={{ backgroundImage: `linear-gradient(to bottom, color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 30%, transparent), transparent)` }} />
+            <div className="absolute left-0 top-0 h-px w-8" style={{ backgroundImage: `linear-gradient(to right, color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 30%, transparent), transparent)` }} />
+            <div className="absolute bottom-0 right-0 h-8 w-px" style={{ backgroundImage: `linear-gradient(to top, color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 30%, transparent), transparent)` }} />
+            <div className="absolute bottom-0 right-0 h-px w-8" style={{ backgroundImage: `linear-gradient(to left, color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 30%, transparent), transparent)` }} />
           </>
         )}
 
         {/* Header */}
         {(title || cornerLabel) && (
-          <div className="mb-3 flex items-start justify-between">
+          <div className="mb-[var(--zai-space-element-md)] flex items-start justify-between">
             {title && (
-              <h3 className="text-sm font-semibold uppercase tracking-wider" style={{ color: colors.text.primary }}>
+              <h3 className="text-sm font-semibold uppercase tracking-wider" style={{ color: tv('COLOR_TEXT_PRIMARY') }}>
                 {title}
               </h3>
             )}
             {cornerLabel && (
-              <div className="text-xs" style={{ color: colors.neutral.v3 }}>{cornerLabel}</div>
+              <div className="text-xs" style={{ color: tv('COLOR_NEUTRAL_V3') }}>{cornerLabel}</div>
             )}
           </div>
         )}

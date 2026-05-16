@@ -1,6 +1,11 @@
 /**
  * ZAI UI Kit - Animation System
  * Reusable animation presets and keyframes
+ *
+ * @deprecated Use the token system instead.
+ *   Import TOKEN / tv from '@zai/ui-kit/tokens' and use CSS custom properties.
+ *   Motion tokens (duration, easing) are defined in skins/dark-zai.css etc.
+ *   This module is kept for backward compatibility and will be removed in v2.
  */
 
 import type { CSSProperties } from 'react'

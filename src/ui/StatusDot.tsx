@@ -5,7 +5,7 @@
 
 import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { Status, SizeSmMdLg } from '../utils/types'
 
 export interface StatusDotProps {
@@ -26,20 +26,20 @@ export interface StatusDotProps {
 }
 
 const sizeMap = {
-  sm: 'w-2 h-2',
-  md: 'w-3 h-3',
-  lg: 'w-4 h-4',
+  sm: 'w-2 h-2',   // TODO: Add token for small dot size
+  md: 'w-3 h-3',   // TODO: Add token for medium dot size (DOT_SIZE is 8px = w-2)
+  lg: 'w-4 h-4',   // TODO: Add token for large dot size
 } as const
 
 const statusColorMap: Record<Status, string> = {
-  online: colors.status.online,
-  offline: colors.status.offline,
-  warning: colors.status.warning,
-  error: colors.status.error,
-  info: colors.status.info,
-  success: colors.status.success,
-  neutral: colors.neutral.v3,
-  unknown: colors.neutral.v3,
+  online: tv('COLOR_STATUS_ONLINE'),
+  offline: tv('COLOR_STATUS_OFFLINE'),
+  warning: tv('COLOR_STATUS_WARNING'),
+  error: tv('COLOR_STATUS_ERROR'),
+  success: tv('COLOR_STATUS_SUCCESS'),
+  info: tv('COLOR_STATUS_INFO'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
+  unknown: tv('COLOR_NEUTRAL_V3'),
 }
 
 export const StatusDot = forwardRef<HTMLSpanElement, StatusDotProps>(
@@ -63,13 +63,14 @@ export const StatusDot = forwardRef<HTMLSpanElement, StatusDotProps>(
         role="status"
         aria-label={ariaLabel ?? `Status: ${status}`}
         className={cn(
-          'inline-block rounded-full',
+          'inline-block rounded-[var(--zai-radius-full)]',
           sizeMap[size],
           pulse && 'animate-pulse',
           className
         )}
         style={{
           backgroundColor: dotColor,
+          // TODO: Add token for glow spread value (8px)
           boxShadow: glow ? `0 0 8px ${dotColor}` : undefined,
         }}
       />

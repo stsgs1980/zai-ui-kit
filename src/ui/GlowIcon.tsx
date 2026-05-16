@@ -4,7 +4,7 @@
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { Size, Variant, WithClassName } from '../utils/types'
 
 export interface GlowIconProps extends WithClassName {
@@ -43,13 +43,13 @@ const iconSizeMap = {
 } as const
 
 const variantColorMap: Record<Variant, string> = {
-  primary: colors.neutral.base,
-  secondary: colors.neutral.v1,
-  success: colors.neutral.v2,
-  warning: colors.neutral.v3,
-  danger: colors.neutral.v4,
-  info: colors.neutral.v1,
-  neutral: colors.neutral.v3,
+  primary: tv('COLOR_NEUTRAL_BASE'),
+  secondary: tv('COLOR_NEUTRAL_V1'),
+  success: tv('COLOR_NEUTRAL_V2'),
+  warning: tv('COLOR_NEUTRAL_V3'),
+  danger: tv('COLOR_NEUTRAL_V4'),
+  info: tv('COLOR_NEUTRAL_V1'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
 }
 
 export const GlowIcon = forwardRef<HTMLSpanElement, GlowIconProps>(
@@ -82,7 +82,7 @@ export const GlowIcon = forwardRef<HTMLSpanElement, GlowIconProps>(
         {glow && (
           <span
             className={cn(
-              'absolute inset-0 rounded-full blur-sm',
+              'absolute inset-0 rounded-[var(--zai-radius-full)] blur-sm',
               pulse && 'animate-pulse'
             )}
             style={{
@@ -95,7 +95,7 @@ export const GlowIcon = forwardRef<HTMLSpanElement, GlowIconProps>(
         {/* Background */}
         {background && (
           <span
-            className="absolute inset-0 rounded-full"
+            className="absolute inset-0 rounded-[var(--zai-radius-full)]"
             style={{
               backgroundColor: iconColor,
               opacity: backgroundOpacity,

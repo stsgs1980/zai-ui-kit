@@ -4,7 +4,7 @@
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import { StatusDot } from '../ui/StatusDot'
 import type { KeyValue, SizeSmMdLg, WithClassName } from '../utils/types'
 
@@ -28,15 +28,15 @@ export interface KeyValueListProps extends WithClassName {
 }
 
 const sizeGapMap = {
-  sm: 'gap-1',
-  md: 'gap-2',
-  lg: 'gap-3',
+  sm: 'gap-[var(--zai-space-1)]',
+  md: 'gap-[var(--zai-space-2)]',
+  lg: 'gap-[var(--zai-space-3)]',
 }
 
 const sizeFontMap = {
-  sm: 'text-xs',
-  md: 'text-sm',
-  lg: 'text-base',
+  sm: 'text-[var(--zai-font-size-1)]',
+  md: 'text-[var(--zai-font-size-2)]',
+  lg: 'text-[var(--zai-font-size-3)]',
 }
 
 export const KeyValueList = forwardRef<HTMLDListElement, KeyValueListProps>(
@@ -67,12 +67,12 @@ export const KeyValueList = forwardRef<HTMLDListElement, KeyValueListProps>(
           <div
             key={item.key}
             className={cn(
-              direction === 'horizontal' ? 'flex items-center gap-2' : 'flex items-center justify-between',
+              direction === 'horizontal' ? 'flex items-center gap-[var(--zai-space-element-sm)]' : 'flex items-center justify-between',
             )}
             style={{
               minWidth: labelWidth ? labelWidth : undefined,
               ...(dividers && index < items.length - 1 ? {
-                borderBottom: `1px solid ${colors.background.surfaceA50}`,
+                borderBottom: `1px solid ${tv('COLOR_BG_SURFACE')}`,
                 paddingBottom: '0.5rem',
                 marginBottom: '0.5rem',
               } : {}),
@@ -81,14 +81,14 @@ export const KeyValueList = forwardRef<HTMLDListElement, KeyValueListProps>(
             <dt
               className={sizeFontMap[size]}
               style={{
-                color: colors.text.secondary,
+                color: tv('COLOR_TEXT_SECONDARY'),
                 width: direction === 'horizontal' ? (labelWidth ?? 'auto') : undefined,
               }}
             >
               {renderKey ? (
                 renderKey(item, index)
               ) : (
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-[var(--zai-space-element-sm)]">
                   {showDots && item.status && (
                     <StatusDot status={item.status} size="sm" />
                   )}
@@ -97,7 +97,7 @@ export const KeyValueList = forwardRef<HTMLDListElement, KeyValueListProps>(
                 </span>
               )}
             </dt>
-            <dd className={cn('font-medium', sizeFontMap[size])} style={{ color: colors.text.primary }}>
+            <dd className={cn('font-medium', sizeFontMap[size])} style={{ color: tv('COLOR_TEXT_PRIMARY') }}>
               {renderValue ? renderValue(item, index) : item.value}
             </dd>
           </div>

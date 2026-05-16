@@ -4,7 +4,7 @@
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { Size, TrendDirection, WithClassName } from '../utils/types'
 import { sizeMap, trendColorMap, formatValue } from './MetricValue.helpers'
 
@@ -60,11 +60,11 @@ export const MetricValue = forwardRef<HTMLDivElement, MetricValueProps>(
     return (
       <div ref={ref} className={cn('flex flex-col', className)}>
         {label && (
-          <span className={sizes.label} style={{ color: colors.text.secondary }}>{label}</span>
+          <span className={sizes.label} style={{ color: tv('COLOR_TEXT_SECONDARY') }}>{label}</span>
         )}
-        <div className="flex items-baseline gap-1">
+        <div className="flex items-baseline gap-[var(--zai-space-element-xs)]">
           {prefix && (
-            <span className={sizes.unit} style={{ color: colors.text.secondary }}>{prefix}</span>
+            <span className={sizes.unit} style={{ color: tv('COLOR_TEXT_SECONDARY') }}>{prefix}</span>
           )}
           <span
             className={cn(
@@ -76,12 +76,12 @@ export const MetricValue = forwardRef<HTMLDivElement, MetricValueProps>(
             {displayValue}
           </span>
           {unit && (
-            <span className={sizes.unit} style={{ color: colors.text.secondary }}>{unit}</span>
+            <span className={sizes.unit} style={{ color: tv('COLOR_TEXT_SECONDARY') }}>{unit}</span>
           )}
           {suffix}
           {trend !== undefined && trendValue !== undefined && (
             <span
-              className="ml-2 flex items-center gap-0.5 text-sm"
+              className="ml-[var(--zai-space-element-sm)] flex items-center gap-0.5 text-sm"  // TODO: Add token for 0.5 gap (2px)
               style={{ color: trendColorMap[trend] }}
             >
               {showTrendArrow && (

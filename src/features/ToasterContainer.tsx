@@ -22,10 +22,10 @@ export function ToasterContainer({
   if (toasts.length === 0) return null
 
   const positionClasses = {
-    'top-right': 'top-4 right-4',
-    'top-left': 'top-4 left-4',
-    'bottom-right': 'bottom-4 right-4',
-    'bottom-left': 'bottom-4 left-4',
+    'top-right': 'top-[var(--zai-space-card-sm)] right-[var(--zai-space-card-sm)]',
+    'top-left': 'top-[var(--zai-space-card-sm)] left-[var(--zai-space-card-sm)]',
+    'bottom-right': 'bottom-[var(--zai-space-card-sm)] right-[var(--zai-space-card-sm)]',
+    'bottom-left': 'bottom-[var(--zai-space-card-sm)] left-[var(--zai-space-card-sm)]',
   }
 
   return (
@@ -33,7 +33,7 @@ export function ToasterContainer({
       aria-live="polite"
       aria-label="Notifications"
       className={cn(
-        'pointer-events-none fixed z-[1080] flex flex-col gap-2',
+        'pointer-events-none fixed z-[var(--zai-z-toast)] flex flex-col gap-[var(--zai-space-element-sm)]',
         positionClasses[position]
       )}
     >

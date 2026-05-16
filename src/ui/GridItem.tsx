@@ -2,11 +2,12 @@
  * GridItem - Simple grid cell for CSS Grid demonstrations
  *
  * Layer: L1 (ui/atom)
- * Imports only from: ../utils/, ../theme/
+ * Imports only from: ../utils/, ../tokens/
  */
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
+import { tv } from '../tokens'
 
 export interface GridItemProps {
   /** Cell content */
@@ -23,12 +24,22 @@ export const GridItem = forwardRef<HTMLDivElement, GridItemProps>(
       <div
         ref={ref}
         className={cn(
-          'text-xs font-mono flex items-center justify-center p-2 rounded',
+          'text-xs font-mono flex items-center justify-center p-[var(--zai-space-element-sm)] rounded-[var(--zai-radius-default)]',
           dark
-            ? 'bg-neutral-800 text-white'
-            : 'bg-neutral-100 text-neutral-700 border border-neutral-300',
+            ? 'text-white'
+            : '',
           className
         )}
+        style={dark
+          ? { backgroundColor: tv('COLOR_BG_ELEVATED') }
+          : {
+              backgroundColor: tv('COLOR_BG_TERTIARY'),
+              color: tv('COLOR_TEXT_DISABLED'),
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: tv('COLOR_BORDER_SUBTLE'),
+            }
+        }
       >
         {children}
       </div>

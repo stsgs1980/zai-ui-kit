@@ -2,12 +2,12 @@
  * SessionBadge - Market session indicator badge
  * Extracted from CHROMEDNA patterns
  *
- * Colors sourced from centralized palette (colors.neutral.*)
+ * Colors sourced from token system (tv() + color-mix())
  */
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { WithClassName } from '../utils/types'
 
 export type MarketSession = 'pre' | 'regular' | 'after' | 'closed'
@@ -25,28 +25,28 @@ export interface SessionBadgeProps extends WithClassName {
   pulse?: boolean
 }
 
-/** Map session → neutral palette key */
-const sessionKey: Record<MarketSession, 'v1' | 'v2' | 'v3' | 'v4'> = {
-  pre: 'v1',       // #CCCCCC
-  regular: 'v2',   // #BFBFBF
-  after: 'v3',     // #878992
-  closed: 'v4',    // #5C6070
-}
-
-/** Map session → text alpha */
-const sessionTextAlpha: Record<MarketSession, number> = {
-  pre: 0.8,
-  regular: 0.9,
-  after: 0.8,
-  closed: 0.7,
-}
-
-/** Map session → border alpha */
-const sessionBorderAlpha: Record<MarketSession, number> = {
-  pre: 0.2,
-  regular: 0.2,
-  after: 0.15,
-  closed: 0.2,
+/** Map session → token-based CSS custom properties */
+const sessionCSSProps: Record<MarketSession, React.CSSProperties> = {
+  pre: {
+    '--session-text': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 80%, transparent)`,
+    '--session-bg': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 10%, transparent)`,
+    '--session-border': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V1')} 20%, transparent)`,
+  } as React.CSSProperties,
+  regular: {
+    '--session-text': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V2')} 90%, transparent)`,
+    '--session-bg': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V2')} 10%, transparent)`,
+    '--session-border': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V2')} 20%, transparent)`,
+  } as React.CSSProperties,
+  after: {
+    '--session-text': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 80%, transparent)`,
+    '--session-bg': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 10%, transparent)`,
+    '--session-border': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V3')} 15%, transparent)`,
+  } as React.CSSProperties,
+  closed: {
+    '--session-text': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V4')} 70%, transparent)`,
+    '--session-bg': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V4')} 10%, transparent)`,
+    '--session-border': `color-mix(in srgb, ${tv('COLOR_NEUTRAL_V4')} 20%, transparent)`,
+  } as React.CSSProperties,
 }
 
 const sessionLabels: Record<MarketSession, string> = {
@@ -56,20 +56,17 @@ const sessionLabels: Record<MarketSession, string> = {
   closed: 'CLOSED',
 }
 
-/** Build CSS custom properties for a session */
-function getSessionCSSProps(session: MarketSession): React.CSSProperties {
-  const k = sessionKey[session]
-  const rgb = colors.neutralRgb[k]
-  return {
-    '--session-text': `rgba(${rgb}, ${sessionTextAlpha[session]})`,
-    '--session-bg': `rgba(${rgb}, 0.1)`,
-    '--session-border': `rgba(${rgb}, ${sessionBorderAlpha[session]})`,
-  } as React.CSSProperties
+/** Map session → dot color token */
+const dotColorMap: Record<MarketSession, string> = {
+  regular: tv('COLOR_NEUTRAL_V2'),
+  pre: tv('COLOR_NEUTRAL_V1'),
+  after: tv('COLOR_NEUTRAL_V3'),
+  closed: tv('COLOR_NEUTRAL_V4'),
 }
 
 const sizeStyles = {
-  sm: 'px-2 py-0.5 text-[8px]',
-  md: 'px-2.5 py-1 text-[10px]',
+  sm: 'px-[var(--zai-space-element-sm)] py-[var(--zai-space-element-xs)] text-[8px]',
+  md: 'px-[var(--zai-space-element-sm)] py-[var(--zai-space-element-xs)] text-[10px]',
 }
 
 export const SessionBadge = forwardRef<HTMLDivElement, SessionBadgeProps>(
@@ -84,28 +81,21 @@ export const SessionBadge = forwardRef<HTMLDivElement, SessionBadgeProps>(
     },
     ref
   ) => {
-    const dotColorMap: Record<MarketSession, string> = {
-      regular: colors.neutral.v2,
-      pre: colors.neutral.v1,
-      after: colors.neutral.v3,
-      closed: colors.neutral.v4,
-    }
-
     return (
       <div
         ref={ref}
         className={cn(
-          'inline-flex items-center gap-1.5 rounded-full border font-semibold uppercase tracking-wider',
+          'inline-flex items-center gap-[var(--zai-space-element-xs)] rounded-[var(--zai-radius-full)] border font-semibold uppercase tracking-wider',
           'text-[var(--session-text)] bg-[var(--session-bg)] border-[var(--session-border)]',
           sizeStyles[size],
           pulse && session === 'regular' && 'animate-pulse',
           className
         )}
-        style={getSessionCSSProps(session)}
+        style={sessionCSSProps[session]}
       >
         {/* Status dot */}
         <span
-          className="w-1.5 h-1.5 rounded-full"
+          className="w-1.5 h-1.5 rounded-[var(--zai-radius-full)]"
           style={{ backgroundColor: dotColorMap[session] }}
         />
 

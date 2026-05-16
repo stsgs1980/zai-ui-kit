@@ -5,6 +5,7 @@
 
 import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
+import { tv } from '../tokens'
 import { Copy, Check } from 'lucide-react'
 
 export interface CodeBlockProps {
@@ -25,22 +26,42 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     return (
       <div
         ref={ref}
-        className={cn('relative overflow-hidden bg-white border border-[#CCCCCC]', className)}
+        className={cn(
+          'relative overflow-hidden border',
+          className
+        )}
+        style={{
+          backgroundColor: tv('COLOR_BG_PRIMARY'),
+          borderColor: tv('COLOR_BORDER_MUTED'),
+        }}
       >
         {/* Header bar */}
-        <div className="flex items-center justify-between px-3 py-1.5 bg-[#E6E6E6] border-b border-[#CCCCCC]">
-          <span className="text-[9px] text-[#878992] font-mono uppercase tracking-[0.2em]">
+        <div
+          className="flex items-center justify-between px-[var(--zai-space-3)] py-[var(--zai-space-1)] border-b"
+          style={{
+            backgroundColor: tv('COLOR_BG_SECONDARY'),
+            borderColor: tv('COLOR_BORDER_MUTED'),
+          }}
+        >
+          <span
+            className="text-[9px] font-mono uppercase tracking-[0.2em]"
+            style={{ color: tv('COLOR_TEXT_MUTED') }}
+          >
             &lt;{language}/&gt;
           </span>
           {onCopy && (
             <button
               onClick={onCopy}
-              className="flex items-center gap-1 text-[10px] font-mono text-[#878992] hover:text-[#5C6070] transition-colors"
+              className="flex items-center gap-[var(--zai-space-element-xs)] text-[10px] font-mono transition-colors"
+              style={{ color: tv('COLOR_TEXT_MUTED') }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = tv('COLOR_TEXT_SECONDARY') }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = tv('COLOR_TEXT_MUTED') }}
             >
               {copied ? (
                 <>
-                  <Check className="w-3 h-3 text-[#10b981]" />
-                  <span className="text-[#10b981]">COPIED</span>
+                  <Check className="w-3 h-3" style={{ color: '#10b981' }} />
+                  {/* TODO: TOKEN-SEC — #10b981 (success green) has no token; COLOR_STATUS_SUCCESS is neutral in this skin */}
+                  <span style={{ color: '#10b981' }}>COPIED</span>
                 </>
               ) : (
                 <>
@@ -53,7 +74,10 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
         </div>
 
         {/* Code content */}
-        <pre className="p-3 text-[11px] text-[#5C6070] font-mono leading-relaxed overflow-x-auto">
+        <pre
+          className="p-[var(--zai-space-3)] text-[11px] font-mono leading-relaxed overflow-x-auto"
+          style={{ color: tv('COLOR_TEXT_SECONDARY') }}
+        >
           <code>{code}</code>
         </pre>
       </div>

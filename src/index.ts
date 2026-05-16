@@ -17,7 +17,12 @@
  * @packageDocumentation
  */
 
-// ─── Theme System (export first) ─────────────────────────────
+// ─── Token System (new) ──────────────────────────────────────
+export { TOKEN, tv, tvf } from './tokens'
+export type { TokenKey, TokenValue } from './tokens'
+export type { SkinTokens, SkinOverride } from './tokens/types'
+
+// ─── Theme System (legacy — @deprecated, use tokens) ──────────
 export * from './theme'
 export { colors } from './theme/colors'
 export { spacing, radius, shadows } from './theme/spacing'

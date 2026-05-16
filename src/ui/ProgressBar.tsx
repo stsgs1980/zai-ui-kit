@@ -5,7 +5,7 @@
 
 import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { SizeSmMdLg, Variant } from '../utils/types'
 
 export interface ProgressBarProps {
@@ -32,19 +32,19 @@ export interface ProgressBarProps {
 }
 
 const sizeMap = {
-  sm: 'h-1',
-  md: 'h-2',
-  lg: 'h-3',
+  sm: 'h-1',   // TODO: Add token for small progress height
+  md: 'h-2',   // h-2 = 8px, PROGRESS_HEIGHT token = 6px — kept for size scale
+  lg: 'h-3',   // TODO: Add token for large progress height
 } as const
 
 const variantColorMap: Record<Variant, string> = {
-  primary: colors.neutral.base,
-  secondary: colors.neutral.v1,
-  success: colors.neutral.v2,
-  warning: colors.neutral.v3,
-  danger: colors.neutral.v4,
-  info: colors.neutral.v1,
-  neutral: colors.neutral.v3,
+  primary: tv('COLOR_NEUTRAL_BASE'),
+  secondary: tv('COLOR_NEUTRAL_V1'),
+  success: tv('COLOR_NEUTRAL_V2'),
+  warning: tv('COLOR_NEUTRAL_V3'),
+  danger: tv('COLOR_NEUTRAL_V4'),
+  info: tv('COLOR_NEUTRAL_V1'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
 }
 
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
@@ -67,7 +67,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     const barColor = color ?? variantColorMap[variant]
 
     return (
-      <div className={cn('flex items-center gap-2', className)}>
+      <div className={cn('flex items-center gap-[var(--zai-space-element-sm)]', className)}>
         <div
           ref={ref}
           role="progressbar"
@@ -76,13 +76,13 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
           aria-valuemax={max}
           aria-label={ariaLabel ?? 'Progress'}
           className={cn(
-            'w-full overflow-hidden rounded-full',
+            'w-full overflow-hidden rounded-[var(--zai-radius-full)]',
             sizeMap[size]
           )}
         >
           {indeterminate ? (
             <div
-              className="h-full w-full animate-[shimmer_1.5s_infinite] rounded-full"
+              className="h-full w-full animate-[shimmer_1.5s_infinite] rounded-[var(--zai-radius-full)]"
               style={{
                 background: `linear-gradient(90deg, transparent, ${barColor}, transparent)`,
                 backgroundSize: '200% 100%',
@@ -90,19 +90,17 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
             />
           ) : (
             <div
-              className={cn(
-                'h-full rounded-full',
-                animated && 'transition-all duration-300 ease-out'
-              )}
+              className={cn('h-full rounded-[var(--zai-radius-full)]')}
               style={{
                 width: `${percentage}%`,
                 backgroundColor: barColor,
+                ...(animated ? { transition: `all ${tv('DURATION_NORMAL')} ${tv('EASING_OUT')}` } : {}),
               }}
             />
           )}
         </div>
         {showLabel && !indeterminate && (
-          <span className="min-w-[3rem] text-sm" style={{ color: colors.text.secondary }}>
+          <span className="min-w-[3rem] text-sm" style={{ color: tv('COLOR_TEXT_SECONDARY') }}>
             {Math.round(percentage)}%
           </span>
         )}

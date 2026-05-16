@@ -2,7 +2,7 @@
  * MetricValue helpers — extracted constants and formatting logic
  */
 
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { TrendDirection } from '../utils/types'
 
 export const sizeMap = {
@@ -14,9 +14,9 @@ export const sizeMap = {
 } as const
 
 export const trendColorMap: Record<TrendDirection, string> = {
-  up: colors.neutral.base,
-  down: colors.neutral.v4,
-  neutral: colors.neutral.v3,
+  up: tv('COLOR_NEUTRAL_BASE'),
+  down: tv('COLOR_NEUTRAL_V4'),
+  neutral: tv('COLOR_NEUTRAL_V3'),
 }
 
 export function formatValue(

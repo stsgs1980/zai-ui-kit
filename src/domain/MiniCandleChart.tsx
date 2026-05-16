@@ -1,12 +1,12 @@
 /**
  * MiniCandleChart - Candlestick mini chart for financial dashboards
  *
- * Colors sourced from centralized palette (colors.neutral.*)
+ * Colors sourced from token system (tv() + color-mix())
  */
 
 import { forwardRef } from 'react';
 import { cn } from '../utils/cn';
-import { colors } from '../theme/colors';
+import { tv } from '../tokens';
 
 export interface MiniCandleChartProps {
   /** Array of OHLC candles */
@@ -37,9 +37,9 @@ export const MiniCandleChart = forwardRef<HTMLDivElement, MiniCandleChartProps>(
     candles,
     width = 248,
     height = 80,
-    bullishColor = colors.neutral.base,
-    bearishColor = colors.neutral.v4,
-    lineColor = colors.neutral.v3,
+    bullishColor = tv('COLOR_NEUTRAL_BASE'),
+    bearishColor = tv('COLOR_NEUTRAL_V4'),
+    lineColor = tv('COLOR_NEUTRAL_V3'),
     showCloseLine = true,
     className,
   }, ref) => {
@@ -67,12 +67,12 @@ export const MiniCandleChart = forwardRef<HTMLDivElement, MiniCandleChartProps>(
       <div
         ref={ref}
         className={cn(
-          'rounded-lg border p-2',
+          'rounded-[var(--zai-radius-lg)] border p-[var(--zai-space-2)]',
           className
         )}
         style={{
-          backgroundColor: `rgba(${colors.neutralRgb.base}, 0.02)`,
-          borderColor: `rgba(${colors.neutralRgb.base}, 0.04)`,
+          backgroundColor: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 2%, transparent)`,
+          borderColor: `color-mix(in srgb, ${tv('COLOR_NEUTRAL_BASE')} 4%, transparent)`,
         }}
       >
         <svg width={width} height={height} className="w-full">

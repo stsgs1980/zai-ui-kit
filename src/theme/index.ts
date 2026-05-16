@@ -1,6 +1,10 @@
 /**
  * ZAI UI Kit - Theme System
  * Export all theme-related utilities and values
+ *
+ * @deprecated Use the token system instead.
+ *   Import TOKEN / tv from '@zai/ui-kit/tokens' and use CSS custom properties.
+ *   This module is kept for backward compatibility and will be removed in v2.
  */
 
 export * from './colors'

@@ -10,7 +10,7 @@
 
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { WithClassName, ColumnDef } from '../utils/types'
 import { sizePaddingMap, TableSkeleton, TableEmptyState } from './DataTable.helpers'
 
@@ -74,8 +74,8 @@ export function DataTable<T extends Record<string, unknown>>(
               stickyHeader && 'sticky top-0 z-10'
             )}
             style={{
-              borderColor: colors.border.default,
-              backgroundColor: colors.background.surfaceA50,
+              borderColor: tv('COLOR_BORDER_DEFAULT'),
+              backgroundColor: tv('COLOR_BG_SURFACE'),
             }}
           >
             {columns.map((col) => (
@@ -89,8 +89,8 @@ export function DataTable<T extends Record<string, unknown>>(
                 style={{
                   width: col.width,
                   textAlign: col.align ?? 'left',
-                  color: colors.text.secondary,
-                  borderColor: bordered ? colors.border.default : undefined,
+                  color: tv('COLOR_TEXT_SECONDARY'),
+                  borderColor: bordered ? tv('COLOR_BORDER_DEFAULT') : undefined,
                 }}
               >
                 {col.header}
@@ -116,9 +116,9 @@ export function DataTable<T extends Record<string, unknown>>(
                   getRowClassName?.(row, rowIndex)
                 )}
                 style={{
-                  borderColor: colors.background.surfaceA50,
+                  borderColor: tv('COLOR_BG_SURFACE'),
                 }}
-                onMouseEnter={(e) => hoverable && (e.currentTarget.style.backgroundColor = colors.background.surfaceA50)}
+                onMouseEnter={(e) => hoverable && (e.currentTarget.style.backgroundColor = tv('COLOR_BG_SURFACE'))}
                 onMouseLeave={(e) => hoverable && (e.currentTarget.style.backgroundColor = '')}
               >
                 {columns.map((col) => (

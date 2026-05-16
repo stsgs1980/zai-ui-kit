@@ -2,9 +2,9 @@
  * TrendIndicator - Shows directional trend (up/down/neutral) with optional value
  */
 
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
-import { colors } from '../theme/colors'
+import { tv } from '../tokens'
 import type { TrendDirection, SizeSmMdLg, WithChildren } from '../utils/types'
 
 export interface TrendIndicatorProps extends WithChildren {
@@ -25,15 +25,15 @@ export interface TrendIndicatorProps extends WithChildren {
 }
 
 const sizeMap = {
-  sm: 'text-xs gap-0.5',
-  md: 'text-sm gap-1',
-  lg: 'text-base gap-1.5',
+  sm: 'text-xs gap-0.5',    // TODO: Add token for 0.5 gap (2px)
+  md: 'text-sm gap-[var(--zai-space-element-xs)]',
+  lg: 'text-base gap-1.5',  // TODO: Add token for 1.5 gap (6px)
 } as const
 
 const arrowSizeMap = {
-  sm: 'w-3 h-3',
-  md: 'w-4 h-4',
-  lg: 'w-5 h-5',
+  sm: 'w-3 h-3',   // TODO: Add token for small arrow size
+  md: 'w-4 h-4',   // TODO: Add token for medium arrow size
+  lg: 'w-5 h-5',   // TODO: Add token for large arrow size
 } as const
 
 const directionConfig: Record<
@@ -41,15 +41,15 @@ const directionConfig: Record<
   { color: string; arrow: string; transform?: string }
 > = {
   up: {
-    color: colors.neutral.base,
+    color: tv('COLOR_NEUTRAL_BASE'),
     arrow: 'M5 15l7-7 7 7',
   },
   down: {
-    color: colors.neutral.v4,
+    color: tv('COLOR_NEUTRAL_V4'),
     arrow: 'M19 9l-7 7-7-7',
   },
   neutral: {
-    color: colors.neutral.v3,
+    color: tv('COLOR_NEUTRAL_V3'),
     arrow: 'M5 12h14',
   },
 }
@@ -72,13 +72,13 @@ export const TrendIndicator = forwardRef<HTMLSpanElement, TrendIndicatorProps>(
     let displayColor = color ?? config.color
 
     if (invertColors && direction !== 'neutral') {
-      displayColor = direction === 'up' ? colors.neutral.v4 : colors.neutral.base
+      displayColor = direction === 'up' ? tv('COLOR_NEUTRAL_V4') : tv('COLOR_NEUTRAL_BASE')
     }
 
     return (
       <span
         ref={ref}
-        className={cn('inline-flex items-center font-medium', sizeMap[size])}
+        className={cn('inline-flex items-center font-medium', sizeMap[size], className)}
         style={{ color: displayColor }}
       >
         {showArrow && (

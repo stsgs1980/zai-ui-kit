@@ -1,6 +1,11 @@
 /**
  * ZAI UI Kit - Spacing System
  * Consistent spacing scale based on 4px units
+ *
+ * @deprecated Use the token system instead.
+ *   Import TOKEN / tv from '@zai/ui-kit/tokens' and use CSS custom properties.
+ *   Fibonacci-based spacing tokens are defined in skins/dark-zai.css etc.
+ *   This module is kept for backward compatibility and will be removed in v2.
  */
 
 export const spacing = {

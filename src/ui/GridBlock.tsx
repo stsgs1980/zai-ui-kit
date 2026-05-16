@@ -5,6 +5,7 @@
 
 import { forwardRef } from 'react'
 import { cn } from '../utils/cn'
+import { tv } from '../tokens'
 
 export interface GridBlockProps {
   /** Block label text */
@@ -24,10 +25,10 @@ export interface GridBlockProps {
 }
 
 const sizeMap: Record<string, { text: string; minH: string }> = {
-  xs: { text: 'text-[8px]', minH: 'min-h-[14px]' },
-  sm: { text: 'text-[9px]', minH: 'min-h-[18px]' },
-  md: { text: 'text-[10px]', minH: 'min-h-[22px]' },
-  lg: { text: 'text-[11px]', minH: 'min-h-[28px]' },
+  xs: { text: 'text-[8px]', minH: 'min-h-[14px]' },    // TODO: Add tokens for 8px font size, 14px min-height
+  sm: { text: 'text-[9px]', minH: 'min-h-[18px]' },     // TODO: Add tokens for 9px font size, 18px min-height
+  md: { text: 'text-[10px]', minH: 'min-h-[22px]' },    // TODO: Add tokens for 10px font size, 22px min-height
+  lg: { text: 'text-[11px]', minH: 'min-h-[28px]' },    // TODO: Add tokens for 11px font size, 28px min-height
 }
 
 export const GridBlock = forwardRef<HTMLDivElement, GridBlockProps>(
@@ -38,18 +39,27 @@ export const GridBlock = forwardRef<HTMLDivElement, GridBlockProps>(
       <div
         ref={ref}
         className={cn(
-          'flex items-center justify-center font-mono transition-colors duration-150',
+          'flex items-center justify-center font-mono transition-colors',
           s.text,
           s.minH,
           accent
             ? 'text-white border'
-            : 'text-[#878992] border border-dashed border-[#CCCCCC] bg-[#FAFAFA]',
+            : '',
           className
         )}
         style={{
+          transitionDuration: tv('DURATION_FAST'),
+          transitionTimingFunction: tv('EASING_OUT'),
           ...(colSpan ? { gridColumn: `span ${colSpan}` } : {}),
           ...(rowSpan ? { gridRow: `span ${rowSpan}` } : {}),
           ...(accent && accentColor ? { backgroundColor: accentColor, borderColor: accentColor } : {}),
+          ...(!accent ? {
+            color: tv('COLOR_NEUTRAL_V3'),
+            borderWidth: 1,
+            borderStyle: 'dashed',
+            borderColor: tv('COLOR_NEUTRAL_V1'),
+            backgroundColor: tv('COLOR_BG_SURFACE'),
+          } : {}),
         }}
       >
         {label}
