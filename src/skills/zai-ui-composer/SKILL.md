@@ -1,6 +1,6 @@
 ---
 name: zai-ui-composer
-version: 1.1.0
+version: 1.1.2
 description: >
   Compose, score, and architect production UI using zai-ui-kit token system.
   Handles WHAT goes into a layout: skins, effects, components, scoring.
@@ -41,8 +41,18 @@ description: >
     to put in them (skins, effects, components, scoring). When user asks about grid
     proportions alone -> phi-layout. When user asks about complete page composition
     -> zai-ui-composer (which may invoke phi-layout for the grid layer).
+    INVOCATION: When composing a page that needs a grid layout, call phi-layout with:
+      Skill(command="phi-layout")
+    Then pass layout parameters as natural language in the subagent prompt:
+      "Generate a [Framework] layout grid. Framework: Dashboard. Columns: var(--zai-cols-dashboard). Rows: var(--zai-rows-dashboard). Gap: var(--zai-gap-md)."
+    phi-layout returns the grid-template CSS with responsive breakpoints. zai-ui-composer
+    then fills grid regions with skinned components and effects.
+    DELEGATION RULE: If the user request mentions ANY layout framework name (Dashboard,
+    Trading, Magazine, Holy Grail, Golden Split, Golden Inv, Timeline, Zeitgeist, Spiral,
+    Fibonacci 4, Equal Grid), ALWAYS delegate grid generation to phi-layout and only
+    handle skin/effects/components yourself.
   - anti-monolith: Complementary. anti-monolith decomposes code; zai-ui-composer composes UI.
-changelog: v1.1.0 -- fix trigger overlap with phi-layout, extract data to references, add CSS files, fix contradictions
+changelog: v1.1.2 -- add concrete code templates in Section 14, define phi-layout invocation protocol, add LLM Self-Correction rules
 ---
 
 # ZAI UI Composer Skill
@@ -526,6 +536,28 @@ Spoke 3 - Settings:
 | User says "this is not what I meant" | Stop. Ask the user to clarify intent. Do not keep iterating on the wrong target. |
 | No token for a needed value | Add it to the skin CSS. The token system is extensible by design. |
 
+### LLM Self-Correction Rules
+
+When generating code, if any of these violations are detected, apply the corresponding
+fix IMMEDIATELY and regenerate the code. Do not deliver code with known violations.
+
+| Violation Detected | Auto-Fix Rule | Action |
+|---|---|---|
+| Hardcoded hex color (e.g. `#0a0a0f`, `#3B82F6`) | [C1] Replace with token | Replace `#0a0a0f` with `var(--zai-color-bg-primary)`, `#E6E6E6` with `var(--zai-color-text-primary)`, etc. If no token exists, add one to the skin CSS first. |
+| Hardcoded pixel spacing (e.g. `padding: 16px`) | [C2] Replace with token | Replace with `var(--zai-space-5)` (20px closest Fibonacci) or `var(--zai-gap-md)` (12px). NEVER round to non-Fibonacci values. |
+| Mixed skin tokens (dark-zai + light-corp in same file) | [C3] Unify to one skin | Remove all tokens from the wrong skin. Re-read the chosen skin CSS file and use only its tokens. |
+| More than 2 effect techniques in one composition | [C4] Remove weakest effect | Keep the 2 techniques that best serve the intent. Remove others. Re-score Effect Consistency. |
+| Shimmer on static/non-loading content | [C5] Remove shimmer class | Replace `.zai-skeleton-shimmer` / `.zai-glass-card-shimmer` with `.zai-glass-card` (no shimmer). Shimmer is ONLY for loading states. |
+| Animation without prefers-reduced-motion | [C6] Add a11y override | Wrap animation in `@media (prefers-reduced-motion: no-preference)` or add `@media (prefers-reduced-motion: reduce) { .class { animation: none; } }` |
+| Grid layout without scoring | [C7] Score before composing | Run 6-dimension scoring first. Identify weak dimensions. Then compose. Never skip scoring. |
+
+**Self-Correction Protocol:**
+1. Generate code
+2. Scan output for violations (regex check: `#[0-9a-fA-F]{3,8}`, `[0-9]+px` not inside `var()`)
+3. If violation found -> apply Auto-Fix Rule -> regenerate affected section only
+4. Re-scan. If clean -> deliver. If still violating -> escalate to user
+5. Log the correction: `[FIX] Violation [CX] detected in [element]. Applied [rule]. Regenerated.`
+
 
 ## 13. Checklist
 
@@ -592,8 +624,113 @@ Technique: [name] -- [why it fits]
 - [element]: [effect class/token]
 - [element]: [effect class/token]
 
-### Code:
-[production-ready JSX/CSS using only --zai-* tokens]
+### Code (Template -- adapt to your framework):
+```tsx
+// Page shell (dark-zai skin example)
+import '@zai/ui-kit/skins/dark-zai.css'
+import '@zai/ui-kit/tokens/effects.css'
+import '@zai/ui-kit/tokens/animations.css'
+
+export default function Page() {
+  return (
+    <div className="page-shell" style={{
+      display: 'grid',
+      gridTemplateColumns: 'var(--zai-cols-[framework])',  // e.g. var(--zai-cols-dashboard)
+      gridTemplateRows:    'var(--zai-rows-[framework])',    // e.g. var(--zai-rows-dashboard)
+      gap:                 'var(--zai-gap-md)',
+      minHeight:           '100vh',
+      background:          'var(--zai-color-bg-primary)',
+      color:               'var(--zai-color-text-primary)',
+      padding:             'var(--zai-space-5)',
+    }}>
+      {/* Header region */}
+      <header style={{ gridColumn: '1 / -1', padding: 'var(--zai-space-3)' }}>
+        {/* AppHeader component */}
+      </header>
+
+      {/* Sidebar region */}
+      <aside className="zai-glass-card" style={{ padding: 'var(--zai-space-5)' }}>
+        {/* MetricCard x4 */}
+        <div style={{ display: 'grid', gap: 'var(--zai-gap-sm)' }}>
+          <MetricCard label="Portfolio" value="$12,847" />
+          <MetricCard label="P/L" value="+$1,203" className="zai-neon-glow" />
+        </div>
+      </aside>
+
+      {/* Main region */}
+      <main className="zai-glass-card" style={{ padding: 'var(--zai-space-5)' }}>
+        {/* Chart / DataTable */}
+      </main>
+
+      {/* Right aside region */}
+      <aside style={{ display: 'grid', gap: 'var(--zai-gap-sm)', alignContent: 'start' }}>
+        <StatusDot status="online" />
+        <Badge label="Active" className="zai-badge-gradient" />
+      </aside>
+    </div>
+  )
+}
+
+/* Component patterns (use these as building blocks): */
+
+/* MetricCard -- glass card with label + value */
+<div className="zai-glass-card zai-card-lift" style={{
+  padding:     'var(--zai-space-5)',
+  borderRadius: 'var(--zai-radius-xl)',
+}}>
+  <span style={{
+    fontSize:   'var(--zai-font-size-2)',
+    color:      'var(--zai-color-text-muted)',
+  }}>Label</span>
+  <span style={{
+    fontSize:   'var(--zai-font-size-6)',
+    fontWeight: 'var(--zai-font-weight-bold)',
+    color:      'var(--zai-color-text-primary)',
+  }}>Value</span>
+</div>
+
+/* GlassCard -- generic container */
+<div className="zai-glass-card" style={{
+  padding: 'var(--zai-space-5)',
+}}>
+  {/* content */}
+</div>
+
+/* Badge -- tag/label */
+<span className="zai-badge-gradient" style={{
+  fontSize: 'var(--zai-font-size-1)',
+}}>Active</span>
+
+/* StatusDot -- online/offline indicator */
+<span style={{
+  width:  'var(--zai-dot-size)',
+  height: 'var(--zai-dot-size)',
+  borderRadius: 'var(--zai-radius-full)',
+  background: 'var(--zai-color-status-online)',
+}} />
+
+/* Loading skeleton */
+<div className="zai-skeleton" style={{
+  height: 'var(--zai-font-size-6)',
+  width: '60%',
+}} />
+```
+
+**Token-to-CSS cheat sheet (dark-zai skin):**
+
+| Token | Resolved Value | Use For |
+|---|---|---|
+| `var(--zai-color-bg-primary)` | #0a0a0f | Page background |
+| `var(--zai-color-bg-card)` | #15151f | Card surfaces |
+| `var(--zai-color-text-primary)` | #E6E6E6 | Headings, primary text |
+| `var(--zai-color-text-muted)` | #878992 | Labels, secondary text |
+| `var(--zai-color-border-default)` | #5C6070 | Card borders |
+| `var(--zai-glass-bg)` | rgba(3,3,8,0.8) | Glass card background |
+| `var(--zai-glow-color)` | 230,230,230 | Glow RGB (use with rgba()) |
+| `var(--zai-space-5)` | 20px | Standard padding |
+| `var(--zai-gap-md)` | 12px | Card grid gaps |
+| `var(--zai-font-size-6)` | 2rem | Metric values |
+| `var(--zai-radius-xl)` | 12px | Card border-radius |
 ```
 
 ### Quick Recommendation:
