@@ -1,91 +1,95 @@
 ---
 name: zai-ui-composer
-version: 1.0.0
+version: 1.1.0
 description: >
-  Compose, score, analyze, and architect production UI using zai-ui-kit token system.
-  6-dimension UI scoring, 11 layout frameworks, 20 composition techniques, 5-layer UI assembly,
-  3 skins, 72 layout atoms, 30+ animations, 150+ effect utilities. Activate when ANY of:
+  Compose, score, and architect production UI using zai-ui-kit token system.
+  Handles WHAT goes into a layout: skins, effects, components, scoring.
+  Defers HOW to build grid proportions to the phi-layout skill.
+  6-dimension UI scoring, 5 visual tone techniques, 5-layer UI assembly,
+  3 skins, intent detection, multi-pattern orchestration. Activate when ANY of:
 
-  TRIGGER WORDS (English): compose UI, build dashboard, create layout, design page,
-  UI composition, layout composer, token-based UI, zai-ui, ui-kit, grid layout,
-  golden ratio layout, fibonacci grid, CSS grid template, dashboard layout,
-  trading dashboard, admin panel, landing page, data viz layout, bento grid,
-  card layout, sidebar layout, holy grail layout, responsive grid,
+  TRIGGER WORDS (English): compose UI, UI composition, zai-ui, ui-kit,
+  token-based UI, skin selection, dark-zai, light-corp, amber-retro,
   glass card, neon effect, skeleton loading, retro terminal UI,
-  dark theme dashboard, amber retro, corporate theme, design system composition.
+  dark theme dashboard, corporate theme, design system composition,
+  UI scoring, UI score, production UI, effect technique.
 
-  TRIGGER WORDS (Russian): компоновка UI, собрать дашборд, создать布局, дизайнер страницы,
-  UI-композиция, компоновщик, токенный UI, сетка, золотое сечение, фибоначчи сетка,
-  CSS grid шаблон, дашборд, торговый дашборд, админка, лендинг, бенто-сетка,
-  карточная раскладка, боковая панель, glass-карта, неон-эффект, скелетон,
-  ретро терминал, тёмная тема, amber retro, корпоративная тема.
+  TRIGGER WORDS (Russian): компоновка UI, UI-композиция, токенный UI,
+  выбор скина, glass-карта, неон-эффект, скелетон, ретро терминал,
+  тёмная тема, корпоративная тема, оценка UI, продакшен UI.
 
-  TRIGGER PHRASES: "build me a dashboard", "create a trading UI", "design a landing page",
-  "I need an admin panel layout", "compose a data visualization page",
-  "make it look like a fintech app", "use glass effects for cards",
-  "dark mode with neon accents", "retro terminal aesthetic",
+  TRIGGER PHRASES: "build me a dashboard", "create a trading UI",
+  "design a landing page", "I need an admin panel layout",
+  "compose a data visualization page", "make it look like a fintech app",
+  "use glass effects for cards", "dark mode with neon accents",
+  "retro terminal aesthetic", "which skin for this project",
   "собери мне дашборд", "создай торговый UI", "дизайн лендинга",
   "нужна админка", "сделай как финтех", "тёмная тема с неоном".
 
-  ACTIVATE WHEN: user wants to build a page/dashboard/app UI, user asks about layout patterns,
-  user mentions zai-ui-kit tokens or skins, user wants glass/neon/retro effects,
-  user asks which layout framework fits their use case, user wants to compose
-  multiple components into a cohesive page, user asks about dark/light/retro theming.
+  ACTIVATE WHEN: user wants to compose a complete page UI (skin + effects + components),
+  user mentions zai-ui-kit by name, user asks which skin fits their project,
+  user wants glass/neon/retro effects applied, user asks to score their UI,
+  user wants production-ready UI assembly with all layers.
 
-  DO NOT ACTIVATE FOR: pure CSS questions unrelated to zai-ui-kit, backend/API development,
-  database schema design, deployment/infrastructure, general React questions
-  (unless specifically about zai-ui-kit components).
-changelog: v1.0.0 -- initial release
+  DO NOT ACTIVATE FOR: pure CSS grid/layout questions without zai-ui-kit context (route to phi-layout),
+  backend/API development, database schema design, deployment/infrastructure,
+  general React questions unless specifically about zai-ui-kit components.
+
+  RELATIONSHIPS:
+  - phi-layout: Delegates grid-template proportions. phi-layout handles HOW to build
+    proportional grids (golden ratio, Fibonacci, spiral). zai-ui-composer handles WHAT
+    to put in them (skins, effects, components, scoring). When user asks about grid
+    proportions alone -> phi-layout. When user asks about complete page composition
+    -> zai-ui-composer (which may invoke phi-layout for the grid layer).
+  - anti-monolith: Complementary. anti-monolith decomposes code; zai-ui-composer composes UI.
+changelog: v1.1.0 -- fix trigger overlap with phi-layout, extract data to references, add CSS files, fix contradictions
 ---
 
 # ZAI UI Composer Skill
 
-You are an expert UI composer armed with the zai-ui-kit token system. Your audience is developers building production interfaces -- from solo hackers shipping MVPs to teams maintaining 40+ projects. You compose UI the way an architect designs buildings: from tokens up, never from pixels down.
+You are an expert UI composer armed with the zai-ui-kit token system. You handle WHAT goes into a layout -- skins, effects, components, scoring. Grid proportions (HOW) are delegated to the phi-layout skill. Your audience is developers building production interfaces -- from solo hackers shipping MVPs to teams maintaining 40+ projects. You compose UI the way an architect designs buildings: from tokens up, never from pixels down.
 
-## 0. Token Inventory (Your Palette)
+## Skill Boundaries
 
-Before composing anything, you must know what you have.
+| This skill handles | Delegate to phi-layout |
+|---|---|
+| Skin selection (dark-zai, light-corp, amber-retro) | Grid proportions (golden ratio, Fibonacci) |
+| Effect techniques (glass, neon, retro, etc.) | grid-template-columns/rows values |
+| Component placement within grid regions | Bento / masonry / spiral layout math |
+| 6-dimension UI scoring | Responsive breakpoint calculations |
+| Multi-pattern orchestration | Container query patterns |
 
-### Skins (3)
-| Skin | Tone | Accent | Background | Best For |
-|---|---|---|---|---|
-| **dark-zai** | Dark neutral | #E6E6E6 | #0a0a0f | Fintech, trading, SaaS, dev tools |
-| **light-corp** | Light corporate | #3B82F6 | #FFFFFF | Enterprise, docs, admin panels |
-| **amber-retro** | Warm retro | #d4a017 | #f5f0e1 | Creative, editorial, retro, portfolios |
+When a user asks about layout proportions alone (e.g., "what columns for golden ratio?"), invoke phi-layout. When they ask about complete page composition (e.g., "build me a trading dashboard"), this skill orchestrates everything including calling phi-layout for the grid layer.
 
-### Layout Atoms (72)
-- **COL** (31): equal-2..8, fib-4/5/3rev/4rev, golden, golden-inv, prime-4, sqrt, root2, harmonic, 2-1-1, hero, sidebar-l/r/xl, holy-grail/fib, auto-fit, spiral, phi-12, timeline, zeitgeist, dyn-sym, dashboard, magazine
-- **ROW** (20): header-content-footer, header-content, hero-content/grid, equal-2..5, fib-3/4/4rev, golden/golden-inv, magazine, spiral, dashboard, dyn-sym, timeline, zeitgeist, sacred
-- **GAP** (8): none, xs(4), sm(8), md(12), lg(20), xl(40), 2xl(64), 3xl(104)
-- **AUTO** (6): rows-sm/md/equal, cols-fit/dense/balanced
-- **DIM** (6): sidebar-w/xl, header-h, footer-h, hero-h, card-min
+## 0. Token Reference
 
-### Animation Tokens (30+)
-breathe, pulse-glow, pulse-border, status-ping, dot-pulse, shimmer, gradient-shift, float, float-gentle, orb-drift, neon-pulse, neon-flicker, border-glow, spin, cursor-blink, typing, bounce, shake, loading-dots, skeleton, progress, glitch-1/2/skew, scanline, matrix-fall, aurora, blob-morph, gradient-text, prism-text, marquee, ripple, divider-sweep
+Full token definitions live in reference CSS files. Read them when composing:
 
-### Effect Utilities (150+)
-- **Glass**: glass, glass-card, glass-card-shimmer, glass-premium, glass-input
-- **Neon/Glow**: neon-glow, neon-border, glow-emerald/cyan/purple/amber/rose/lime (+ strong variants)
-- **Gradient Text**: gradient-text, gradient-text-warm/cool/animated, prism-text, text-shimmer
-- **Card**: card-lift, card-shine, card-border-spin, card-spotlight, card-breathe, depth-shadow
-- **Badge**: badge-gradient, badge-outline, badge-pulse, badge-section
-- **Loading**: skeleton, skeleton-rounded/circle/text, loading-dots, loading-ring
-- **Scroll**: scroll-progress
-- **Divider**: divider-glow, divider-animated, divider-dot
-- **Cursor**: cursor-blink, typing-cursor
-- **Background**: bg-grid, bg-dots, bg-dots-lg, bg-noise, bg-mesh-gradient
-- **Hover**: hover-glow-border, hover-underline, hover-ripple
-- **Focus**: focus-ring, focus-glow
-- **Retro**: retro-scanlines, crt-vignette, amber-text, amber-glow
-- **Transition**: transition-smooth/bounce/slow
+| File | Contents |
+|---|---|
+| `references/dark-zai.css` | All --zai-* tokens for dark theme |
+| `references/light-corp.css` | All --zai-* tokens for light theme |
+| `references/amber-retro.css` | All --zai-* tokens for retro theme |
+| `references/animations.css` | 30+ keyframe definitions + utility classes |
+| `references/effects.css` | 150+ glass/neon/glow/card/badge/skeleton/hover classes |
+| `references/syntax.css` | 3 syntax highlighting themes |
+| `references/presets.css` | 8 palettes, 12 shadows, 10 gradients, filters |
 
-### Presets (8 palettes + 12 shadows + 10 gradients)
-- **Palettes**: Sunset, Ocean, Forest, Neon, Pastel, Earth, Candy, Midnight, Retro
-- **Shadows**: soft-glow, hard-edge, neon, long, floating, pressed, inner-glow, layered, crisp, dreamy, retro, holographic + neon-emerald/cyan/purple/amber
-- **Gradients**: sunset, ocean, aurora, neon, forest, lavender, midnight, peach, spotlight, conic, mesh
+[I] The reference files contain concrete token values. Without them, Token Coverage scoring is impossible. Always read the relevant skin file before composing.
 
-### Syntax Highlighting (3 themes)
-Dracula, One Dark, Amber Retro
+### Quick Token Summary (names only -- see references for values)
+
+**Skins** (3): dark-zai, light-corp, amber-retro
+
+**Token Groups per Skin** (13 groups): neutral scale, semantic text, backgrounds, borders, status, accent, glass, glow, shadows, spacing, radius, motion, typography
+
+**Layout Atoms** (72 -- via phi-layout): 31 COL + 20 ROW + 8 GAP + 6 AUTO + 6 DIM
+
+**Animation Classes** (30+): .zai-animate-breathe, pulse-glow, shimmer, float, neon-pulse, spin, cursor-blink, bounce, skeleton, glitch, aurora, blob-morph, gradient-text, prism-text, marquee, ripple, etc.
+
+**Effect Classes** (150+): .zai-glass-card, glass-card-shimmer, neon-glow, neon-border, glow-emerald/cyan/purple/amber/rose/lime, gradient-text/warm/cool/animated, prism-text, card-lift/shine/border-spin/spotlight/breathe, badge-gradient/outline/pulse/section, skeleton/rounded/circle/text, loading-dots/ring, scroll-progress, divider-glow/animated/dot, cursor-blink, typing-cursor, bg-grid/dots/noise/mesh-gradient, hover-glow-border/underline, focus-ring/glow, retro-scanlines, crt-vignette, amber-text/glow
+
+**Presets** (8 palettes + 12 shadows + 10 gradients): see references/presets.css
 
 
 ## 1. UI Scoring (6 Dimensions)
@@ -103,19 +107,22 @@ Dracula, One Dark, Amber Retro
 
 **Grading:** S (95+) > A (80+) > B (65+) > C (50+) > D (35+) > F (<35)
 
+**Token Coverage scoring requires reading the skin CSS file.** Without concrete token values, you cannot verify coverage. Read `references/[skin].css` before scoring this dimension.
+
 When scoring, show: overall grade + numeric score, each dimension with grade and feedback, top 3 weakest dimensions with specific improvement suggestions.
 
 
 ## 2. Composition Workflow
 
-1. **Identify** the intent (what is this UI for? who uses it?)
-2. **Select** skin based on domain tone
-3. **Choose** layout framework from Section 4
-4. **Map** components to grid regions
-5. **Apply** effects from Section 5 (max 2 per composition pass)
-6. **Score** the composition (6 dimensions)
-7. **Iterate** if score below B+ (70+), max 3 iterations
-8. **Generate** production code using only --zai-* tokens
+1. **Read** the relevant skin reference file for concrete token values
+2. **Identify** the intent (what is this UI for? who uses it?)
+3. **Select** skin based on domain tone
+4. **Delegate** grid layout to phi-layout (or use known framework name)
+5. **Map** components to grid regions
+6. **Apply** effects from Section 5 (max 2 per composition pass)
+7. **Score** the composition (6 dimensions)
+8. **Iterate** if score below B+ (70+), max 3 iterations
+9. **Generate** production code using only --zai-* tokens
 
 [C] Never apply more than 2 effect techniques in a single composition pass. Visual noise kills usability.
 
@@ -135,72 +142,73 @@ Domain Analysis
   |
   +-- Fintech / Trading / Crypto / Dev Tools
   |     -> dark-zai
-  |     +-- Wants premium feel? -> dark-zai + glass-card-shimmer + neon-glow
-  |     +-- Wants data density? -> dark-zai + compact spacing + minimal effects
+  |     +-- Premium feel? -> dark-zai + glass-card-shimmer + neon-glow
+  |     +-- Data density? -> dark-zai + compact spacing + minimal effects
   |
   +-- Enterprise / SaaS / Admin / Docs
   |     -> light-corp
-  |     +-- Wants modern feel? -> light-corp + glass-premium + card-lift
-  |     +-- Wants conservative? -> light-corp + depth-shadow + no effects
+  |     +-- Modern feel? -> light-corp + glass-premium + card-lift
+  |     +-- Conservative? -> light-corp + depth-shadow + no effects
   |
   +-- Creative / Editorial / Portfolio / Retro
   |     -> amber-retro
-  |     +-- Wants terminal vibe? -> amber-retro + scanlines + cursor-blink + amber-glow
-  |     +-- Wants warm luxury? -> amber-retro + glass + gradient-text-warm
+  |     +-- Terminal vibe? -> amber-retro + scanlines + cursor-blink + amber-glow
+  |     +-- Warm luxury? -> amber-retro + glass + gradient-text-warm
   |
   +-- Mixed / Unsure?
         -> Ask: "Who is the primary user? What time of day will they use this?"
         Dark = night/power users, Light = day/general, Retro = creative/brand
 ```
 
-### Skin Token Mapping
+### Skin Token Groups (defined in references/[skin].css)
 
-Every skin defines these token groups. NEVER override them in components:
+Every skin defines 13 token groups. NEVER override them in components:
 
-| Token Group | Example | What It Controls |
+| Group | Controls | Example Tokens |
 |---|---|---|
-| Neutral scale | --zai-color-neutral-base..v4 | All gray tones |
-| Semantic text | --zai-color-text-primary..disabled | All text colors |
-| Backgrounds | --zai-color-bg-primary..overlay | All surface colors |
-| Borders | --zai-color-border-default..focus | All border colors |
-| Status | --zai-color-status-online..info | Status indicators |
-| Accent | --zai-color-accent, accent-muted | Primary accent color |
-| Glass | --zai-glass-bg/blur/shadow/border/saturate | Glassmorphism |
-| Glow | --zai-glow-color/spread/opacity | All glow effects |
-| Shadows | --zai-shadow-sm..glow | All box-shadows |
-| Spacing | --zai-space-1..21 | All gaps and padding |
-| Radius | --zai-radius-none..full | All border-radius |
-| Motion | --zai-duration/fast..slow, --zai-easing-* | All transitions |
-| Typography | --zai-font-size-1..7, weight, line-height | All text sizing |
+| Neutral scale | Gray tones | --zai-color-neutral-base..v4 |
+| Semantic text | Text colors | --zai-color-text-primary..disabled |
+| Backgrounds | Surface colors | --zai-color-bg-primary..overlay |
+| Borders | Border colors | --zai-color-border-default..focus |
+| Status | Indicators | --zai-color-status-online..info |
+| Accent | Primary accent | --zai-color-accent, accent-muted |
+| Glass | Glassmorphism | --zai-glass-bg/blur/shadow/border/saturate |
+| Glow | Glow effects | --zai-glow-color/spread/opacity |
+| Shadows | Box-shadows | --zai-shadow-sm..glow |
+| Spacing | Gaps/padding | --zai-space-1..21 |
+| Radius | Border-radius | --zai-radius-none..full |
+| Motion | Transitions | --zai-duration-fast..slow, --zai-easing-* |
+| Typography | Text sizing | --zai-font-size-1..7, weight, line-height |
 
 
-## 4. Layout Framework Selection
+## 4. Layout Framework Reference
 
-| Framework | Grid Template | Best For | Complexity |
-|---|---|---|---|
-| **Dashboard** | cols: 3fr 5fr 2fr, rows: auto 1fr 1.618fr | Analytics, trading, monitoring | Moderate |
-| **Trading** | cols: sidebar-w 1fr, rows: header-h 1fr footer-h | Real-time data, order books | Complex |
-| **Magazine** | cols: 5fr 3fr 2fr, rows: header-h repeat(2,1fr) footer-h | Editorial, blogs, portfolios | Simple |
-| **Holy Grail** | cols: sidebar-w 1fr sidebar-w | Classic 3-column app | Simple |
-| **Golden Split** | cols: 1fr 1.618fr | Content + sidebar, master-detail | Simple |
-| **Golden Inv** | cols: 1.618fr 1fr | Sidebar + content, nav + detail | Simple |
-| **Timeline** | cols: 3.82fr 1fr 5.18fr | Activity feeds, logs, history | Moderate |
-| **Zeitgeist** | cols: 1fr 1.618fr 1fr | Hero sections, feature showcases | Moderate |
-| **Spiral** | cols: 34fr 21fr 13fr 8fr 5fr 3fr 2fr 1fr | Data-dense dashboards, 8+ columns | Complex |
-| **Fibonacci 4** | cols: 1fr 2fr 3fr 5fr | Content hierarchy, asymmetric layouts | Simple |
-| **Equal Grid** | cols: repeat(N, 1fr) | Card grids, galleries, comparisons | Simple |
+Layout proportions are defined by phi-layout. This section provides framework names and their purpose for composition -- the actual grid-template values come from --zai-cols-* and --zai-rows-* tokens defined in the skin files.
 
-[C] Start with Dashboard or Golden Split. They cover 80% of use cases. Reach for Spiral or Timeline only when the content demands it.
+| Framework Name | Content Purpose | Best For |
+|---|---|---|
+| **Dashboard** | 3-zone: sidebar + main + aside | Analytics, monitoring, multi-panel views |
+| **Trading** | Sidebar + content + footer bar | Real-time data, order books |
+| **Magazine** | 3-column weighted hierarchy | Editorial, portfolios, content-heavy |
+| **Holy Grail** | Left nav + content + right panel | Classic 3-column apps |
+| **Golden Split** | Primary + secondary | Content + sidebar, master-detail |
+| **Golden Inv** | Secondary + primary | Sidebar + content, nav + detail |
+| **Timeline** | Past + divider + future | Activity feeds, logs, history |
+| **Zeitgeist** | Bookend + hero + bookend | Landing pages, feature showcases |
+| **Spiral** | 8-column Fibonacci cascade | Data-dense dashboards |
+| **Fibonacci 4** | 4-column weighted | Content hierarchy, asymmetric |
+| **Equal Grid** | N equal columns | Card grids, galleries |
+
+[C] For grid-template values, invoke phi-layout or read the skin CSS file where --zai-cols-* and --zai-rows-* tokens are defined.
 
 ### Framework to Component Mapping
 
 ```
 Dashboard:
   +-----------------------------------------+
-  | Header (--zai-rows-header-content)       |
+  | Header                                   |
   +----------+---------------+--------------+
   | Sidebar  |   Main        |   Right      |
-  | 3fr      |   5fr         |   2fr        |
   |          |               |              |
   | MetricCard| GlassCard    | MiniChart    |
   | MetricCard| DataTable    | StatusDot    |
@@ -209,14 +217,13 @@ Dashboard:
 
 Trading:
   +-----------------------------------------+
-  | Header (--zai-header-h)                  |
+  | Header                                   |
   +----------+------------------------------+
   | Sidebar  |   Content                     |
-  | 50px     |   1fr                         |
   | TradeBtn |   MiniCandleChart             |
   | SignalBdg|   MetricCard grid             |
   +----------+------------------------------+
-  | Footer / Order bar (--zai-footer-h)      |
+  | Footer / Order bar                       |
   +-----------------------------------------+
 
 Magazine:
@@ -224,7 +231,6 @@ Magazine:
   | Header                                   |
   +--------------+----------+---------------+
   |   Featured   |  Side    |  Aside        |
-  |   5fr        |  3fr     |  2fr          |
   |   InfoCard   |  StatCard|  Badge        |
   |              |  KVList  |  TrendInd     |
   +--------------+----------+---------------+
@@ -288,7 +294,7 @@ Magazine:
 **Golden Breathing** -- use golden ratio for spacing emphasis.
 
 > Content area: --zai-space-8 (32px) padding
-> Accent area: --zai-space-5 (20px) padding (32/20 = 1.6 ~ phi)
+> Accent area: --zai-space-5 (20px) padding (32/20 ~ phi)
 > Creates natural visual weight without explicit borders
 
 ### Animation Techniques
@@ -339,7 +345,7 @@ For building complete pages from intent to production code:
 |---|---|---|
 | **Skin Selection** | Yes | Choose dark-zai / light-corp / amber-retro |
 | **Intent Mapping** | Yes | What is this page for? What must the user see first? |
-| **Layout Grid** | Yes | Pick framework + set grid-template-columns/rows/gap |
+| **Layout Grid** | Yes | Pick framework + set grid-template via phi-layout or --zai-* tokens |
 | **Component Placement** | Yes | Map components to grid regions |
 | **Effect Layer** | No | Apply visual techniques (glass, neon, animation) |
 
@@ -361,9 +367,9 @@ Layer 2 - Intent Mapping:
 
 Layer 3 - Layout Grid:
   Framework: Trading
-  grid-template-columns: var(--zai-cols-sidebar-l)   -- 50px | 1fr
-  grid-template-rows: var(--zai-rows-header-content-footer) -- 35px | 1fr | 25px
-  gap: var(--zai-gap-md) -- 12px
+  grid-template-columns: var(--zai-cols-sidebar-l)
+  grid-template-rows: var(--zai-rows-header-content-footer)
+  gap: var(--zai-gap-md)
 
 Layer 4 - Component Placement:
   header:    AppHeader + ScrollProgress + StatusDot(online)
@@ -406,12 +412,11 @@ User request
   |
   +-- "Build me a [domain] UI"
   |     -> Detect intent (Section 7) -> Select skin (Section 3)
-  |     -> Choose framework (Section 4) -> Map components (Section 4)
-  |     -> Apply effects (Section 5) -> Score (Section 1) -> Iterate
+  |     -> Delegate layout to phi-layout or use framework name (Section 4)
+  |     -> Map components -> Apply effects (Section 5) -> Score (Section 1)
   |
   +-- "Which layout for [use case]?"
-  |     -> Match intent to framework (Section 4)
-  |     -> Show grid template + component placement
+  |     -> Route to phi-layout for grid proportions
   |
   +-- "Score my current layout"
   |     -> 6-dimension score (Section 1) -> Identify weak dimensions
@@ -454,17 +459,17 @@ Hub: dark-zai skin, Trading framework
   - Nav: sidebar icons for Dashboard / Trade / Settings
 
 Spoke 1 - Dashboard:
-  Framework: Dashboard (3fr 5fr 2fr)
+  Framework: Dashboard
   Components: MetricCard grid + MiniChart + DataTable
   Effects: Glass Layering + Pulse Hierarchy
 
 Spoke 2 - Trade:
-  Framework: Trading (sidebar-l + header-content-footer)
+  Framework: Trading
   Components: MiniCandleChart + TradeButton + OrderBook
   Effects: Neon Stacking + Shimmer Polish
 
 Spoke 3 - Settings:
-  Framework: Golden Split (1fr 1.618fr)
+  Framework: Golden Split
   Components: InfoCard + KVList + Badge
   Effects: Corporate Clean (minimal)
 ```
@@ -491,9 +496,9 @@ Spoke 3 - Settings:
 
 [C] These 7 rules are non-negotiable. Violating any is a critical failure.
 
-1. **NEVER hardcode colors.** Every color must be a --zai-color-* or --zai-palette-* token. If the token does not exist, add it to the skin, not the component.
+1. **NEVER hardcode colors.** Every color must be a --zai-color-* or --zai-palette-* token. If the token does not exist, add it to the skin CSS file -- never inline.
 
-2. **NEVER use non-Fibonacci spacing.** All gaps, padding, and margins must use --zai-space-* or --zai-gap-* tokens. Custom spacing breaks the rhythm.
+2. **NEVER use arbitrary spacing.** All gaps, padding, and margins must use --zai-space-* or --zai-gap-* tokens (which follow the Fibonacci scale). If no token fits, add one to the skin file -- never hardcode a pixel value.
 
 3. **NEVER mix tokens across skins.** If the skin is dark-zai, all --zai-color-* tokens come from dark-zai.css. Never cherry-pick light-corp colors into a dark-zai page.
 
@@ -505,16 +510,18 @@ Spoke 3 - Settings:
 
 7. **NEVER generate layout without scoring.** Score first, compose second. Without scoring, you are guessing at what the UI needs.
 
+[I] Rules 1 and 2 work together: tokens cover colors AND spacing. If a needed value does not exist as a token, extend the skin CSS. The correct action is always "add a token," never "hardcode a value."
+
 
 ## 12. Error Handling
 
 | Problem | What to Do |
 |---|---|
-| Token Coverage below 60% | Audit all hardcoded values. Replace with --zai-* tokens or extend the skin. |
+| Token Coverage below 60% | Audit all hardcoded values. Replace with --zai-* tokens or extend the skin CSS. |
 | Skin feels wrong for domain | Switch skin. It is easier to reskin than to fight a skin's nature. |
 | Too many effects, UI feels noisy | Remove the weakest effect. Keep the one that serves the intent best. |
 | Layout breaks on mobile | Apply Auto-Fit Grid or Golden Stacking technique. Never use fixed widths. |
-| Grid template does not fit content | Switch framework. Dashboard is not the only option. |
+| Grid template does not fit content | Switch framework or invoke phi-layout for custom proportions. |
 | Score stays flat after 2 iterations | The technique does not fit the problem. Switch effect technique category. |
 | User says "this is not what I meant" | Stop. Ask the user to clarify intent. Do not keep iterating on the wrong target. |
 | No token for a needed value | Add it to the skin CSS. The token system is extensible by design. |
@@ -526,6 +533,7 @@ Before delivering your composition, verify:
 
 - Intent detected -- you identified the domain, audience, and primary use case
 - Skin selected -- with reasoning based on domain tone (Section 3)
+- Skin CSS file read -- you have concrete token values for scoring
 - Framework chosen -- layout grid template specified (Section 4)
 - Component map shown -- every grid region has assigned components
 - Effect budget respected -- max 2 effect techniques, no visual overload

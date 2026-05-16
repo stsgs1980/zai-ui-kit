@@ -1,0 +1,652 @@
+/**
+ * @zai/ui-kit — Tokens: Visual Effects
+ * Glass, neon, gradient, card, scroll, badge, skeleton, cursor, retro utilities
+ * Harvested from Code-Realm and adapted to --zai-* token system
+ *
+ * Usage: import '@zai/ui-kit/tokens/effects.css'
+ * Then apply classes: <div className="zai-glass-card">
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   GLASS / GLASSMORPHISM
+   ═══════════════════════════════════════════════════════════ */
+.zai-glass {
+  background: var(--zai-glass-bg);
+  border: 1px solid var(--zai-glass-border);
+  box-shadow: var(--zai-glass-shadow);
+  backdrop-filter: blur(var(--zai-glass-blur)) saturate(var(--zai-glass-saturate));
+  -webkit-backdrop-filter: blur(var(--zai-glass-blur)) saturate(var(--zai-glass-saturate));
+}
+
+.zai-glass-card {
+  background: var(--zai-glass-bg);
+  border: 1px solid var(--zai-glass-border);
+  box-shadow: var(--zai-glass-shadow);
+  backdrop-filter: blur(var(--zai-glass-blur)) saturate(var(--zai-glass-saturate));
+  border-radius: var(--zai-radius-xl);
+  transition: all var(--zai-duration-normal) var(--zai-easing-default);
+  position: relative;
+  overflow: hidden;
+}
+
+.zai-glass-card:hover {
+  border-color: rgba(var(--zai-glow-color), 0.15);
+  box-shadow: var(--zai-glass-shadow), 0 0 24px rgba(var(--zai-glow-color), 0.08);
+}
+
+/* Glass card with shimmer border */
+.zai-glass-card-shimmer {
+  background: var(--zai-glass-bg);
+  border: 1px solid var(--zai-glass-border);
+  backdrop-filter: blur(var(--zai-glass-blur)) saturate(var(--zai-glass-saturate));
+  border-radius: var(--zai-radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+.zai-glass-card-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(var(--zai-glow-color), 0.3) 50%,
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: zai-shimmer-sweep 4s linear infinite;
+}
+
+/* Glass premium with saturate */
+.zai-glass-premium {
+  background: rgba(var(--zai-glow-color), 0.03);
+  border: 1px solid rgba(var(--zai-glow-color), 0.1);
+  backdrop-filter: blur(24px) saturate(1.8);
+  border-radius: var(--zai-radius-xl);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Glass input */
+.zai-glass-input {
+  background: var(--zai-glass-bg);
+  border: 1px solid var(--zai-glass-border);
+  backdrop-filter: blur(var(--zai-glass-blur));
+  border-radius: var(--zai-radius-md);
+  transition: border-color var(--zai-duration-fast) var(--zai-easing-default);
+}
+.zai-glass-input:focus {
+  border-color: rgba(var(--zai-glow-color), 0.4);
+  box-shadow: 0 0 0 2px rgba(var(--zai-glow-color), 0.1);
+  outline: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   NEON / GLOW EFFECTS
+   ═══════════════════════════════════════════════════════════ */
+.zai-neon-glow {
+  text-shadow: 0 0 4px currentColor, 0 0 8px currentColor;
+  animation: var(--zai-anim-neon-pulse);
+}
+
+.zai-neon-border {
+  border: 1px solid rgba(var(--zai-glow-color), 0.3);
+  box-shadow: 0 0 8px rgba(var(--zai-glow-color), 0.15), inset 0 0 8px rgba(var(--zai-glow-color), 0.05);
+  transition: all var(--zai-duration-normal) var(--zai-easing-default);
+}
+.zai-neon-border:hover {
+  border-color: rgba(var(--zai-glow-color), 0.6);
+  box-shadow: 0 0 16px rgba(var(--zai-glow-color), 0.25), inset 0 0 16px rgba(var(--zai-glow-color), 0.08);
+}
+
+/* Colored glow utilities */
+.zai-glow-emerald  { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+.zai-glow-cyan     { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+.zai-glow-purple   { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+.zai-glow-amber    { box-shadow: 0 0 20px rgba(212, 160, 23, 0.3); }
+.zai-glow-rose     { box-shadow: 0 0 20px rgba(244, 63, 94, 0.3); }
+.zai-glow-lime     { box-shadow: 0 0 20px rgba(132, 204, 22, 0.3); }
+
+.zai-glow-emerald-strong { box-shadow: 0 0 10px rgba(16, 185, 129, 0.4), 0 0 30px rgba(16, 185, 129, 0.2); }
+.zai-glow-cyan-strong    { box-shadow: 0 0 10px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.2); }
+.zai-glow-purple-strong  { box-shadow: 0 0 10px rgba(139, 92, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.2); }
+
+/* Text glow */
+.zai-text-glow-emerald { text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+.zai-text-glow-cyan    { text-shadow: 0 0 8px rgba(6, 182, 212, 0.6); }
+.zai-text-glow-purple  { text-shadow: 0 0 8px rgba(139, 92, 246, 0.6); }
+.zai-text-glow-amber   { text-shadow: 0 0 8px rgba(212, 160, 23, 0.6); }
+
+/* Text glow pulse */
+.zai-text-glow-pulse {
+  animation: zai-neon-pulse 2.5s ease-in-out infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   GRADIENT TEXT
+   ═══════════════════════════════════════════════════════════ */
+.zai-gradient-text {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zai-gradient-text-warm {
+  background: linear-gradient(135deg, #d4a017, #f43f5e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zai-gradient-text-cool {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zai-gradient-text-animated {
+  background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6, #10b981);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: zai-gradient-text 5s ease infinite;
+}
+
+.zai-prism-text {
+  background: linear-gradient(90deg, #ff6b35, #f7c948, #10b981, #06b6d4, #8b5cf6, #f43f5e, #ff6b35);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: zai-prism-text 6s ease infinite;
+}
+
+/* Shimmer text sweep */
+.zai-text-shimmer {
+  background: linear-gradient(90deg, currentColor 40%, rgba(var(--zai-glow-color), 0.8) 50%, currentColor 60%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: zai-shimmer-sweep 3s ease-in-out infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CARD EFFECTS
+   ═══════════════════════════════════════════════════════════ */
+/* Hover lift */
+.zai-card-lift {
+  transition: transform var(--zai-duration-normal) var(--zai-easing-out),
+              box-shadow var(--zai-duration-normal) var(--zai-easing-default);
+}
+.zai-card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--zai-shadow-lg);
+}
+
+/* Shine sweep on hover */
+.zai-card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.zai-card-shine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: none;
+}
+.zai-card-shine:hover::after {
+  animation: zai-card-shine 0.7s ease-out forwards;
+}
+
+/* Gradient border (conic spin) */
+.zai-card-border-spin {
+  position: relative;
+  background: var(--zai-color-bg-card);
+  border-radius: var(--zai-radius-xl);
+  overflow: hidden;
+}
+.zai-card-border-spin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--zai-spin-angle, 0deg), transparent 40%, rgba(var(--zai-glow-color), 0.5) 50%, transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: zai-spin 3s linear infinite;
+}
+
+/* Spotlight (mouse follow) — requires JS to set --mouse-x/y */
+.zai-card-spotlight {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+.zai-card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(var(--zai-glow-color), 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+/* Breathe card */
+.zai-card-breathe {
+  animation: zai-breathe 4s ease-in-out infinite;
+}
+
+/* Depth shadow */
+.zai-depth-shadow {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BADGE / TAG
+   ═══════════════════════════════════════════════════════════ */
+.zai-badge-gradient {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--zai-badge-padding-y) var(--zai-badge-padding-x);
+  border-radius: var(--zai-badge-radius);
+  background: linear-gradient(135deg, rgba(var(--zai-glow-color), 0.15), rgba(var(--zai-glow-color), 0.05));
+  border: 1px solid rgba(var(--zai-glow-color), 0.2);
+  font-size: var(--zai-font-size-1);
+  font-weight: var(--zai-font-weight-medium);
+  color: var(--zai-color-text-secondary);
+  transition: all var(--zai-duration-normal) var(--zai-easing-default);
+}
+.zai-badge-gradient:hover {
+  background: linear-gradient(135deg, rgba(var(--zai-glow-color), 0.25), rgba(var(--zai-glow-color), 0.1));
+  border-color: rgba(var(--zai-glow-color), 0.4);
+}
+
+.zai-badge-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--zai-badge-padding-y) var(--zai-badge-padding-x);
+  border-radius: var(--zai-badge-radius);
+  border: 1px dashed rgba(var(--zai-glow-color), 0.3);
+  background: transparent;
+  font-size: var(--zai-font-size-1);
+  font-weight: var(--zai-font-weight-medium);
+  color: var(--zai-color-text-muted);
+  transition: all var(--zai-duration-normal) var(--zai-easing-default);
+}
+.zai-badge-outline:hover {
+  border-style: solid;
+  border-color: rgba(var(--zai-glow-color), 0.5);
+  background: rgba(var(--zai-glow-color), 0.05);
+  color: var(--zai-color-text-secondary);
+}
+
+.zai-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--zai-badge-padding-y) var(--zai-badge-padding-x);
+  border-radius: var(--zai-badge-radius);
+  border: 1px solid rgba(var(--zai-glow-color), 0.3);
+  background: rgba(var(--zai-glow-color), 0.05);
+  animation: zai-pulse-border 3s ease-in-out infinite;
+}
+
+/* Section badge (conic gradient animated border) */
+.zai-badge-section {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zai-space-1);
+  padding: var(--zai-badge-padding-y) var(--zai-badge-padding-x);
+  border-radius: var(--zai-badge-radius);
+  position: relative;
+  overflow: hidden;
+  font-size: var(--zai-font-size-1);
+  font-weight: var(--zai-font-weight-medium);
+}
+.zai-badge-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--zai-spin-angle, 0deg), transparent 30%, rgba(var(--zai-glow-color), 0.5) 50%, transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: zai-spin 4s linear infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   LOADING / SKELETON
+   ═══════════════════════════════════════════════════════════ */
+.zai-skeleton {
+  background: linear-gradient(90deg, var(--zai-color-bg-surface) 25%, var(--zai-color-bg-elevated) 50%, var(--zai-color-bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: zai-skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--zai-radius-md);
+}
+
+.zai-skeleton-rounded {
+  background: linear-gradient(90deg, var(--zai-color-bg-surface) 25%, var(--zai-color-bg-elevated) 50%, var(--zai-color-bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: zai-skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--zai-radius-xl);
+}
+
+.zai-skeleton-circle {
+  background: linear-gradient(90deg, var(--zai-color-bg-surface) 25%, var(--zai-color-bg-elevated) 50%, var(--zai-color-bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: zai-skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--zai-radius-full);
+}
+
+.zai-skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  width: 80%;
+}
+.zai-skeleton-text:last-child { width: 60%; }
+
+/* Loading dots */
+.zai-loading-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.zai-loading-dots span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--zai-color-text-muted);
+  animation: zai-loading-dots 1.4s ease-in-out infinite;
+}
+.zai-loading-dots span:nth-child(2) { animation-delay: 0.16s; }
+.zai-loading-dots span:nth-child(3) { animation-delay: 0.32s; }
+
+/* Loading ring */
+.zai-loading-ring {
+  width: 20px; height: 20px;
+  border: 2px solid var(--zai-color-border-subtle);
+  border-top-color: var(--zai-color-text-secondary);
+  border-radius: 50%;
+  animation: zai-loading-ring 0.9s linear infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL PROGRESS
+   ═══════════════════════════════════════════════════════════ */
+.zai-scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(var(--zai-glow-color), 0.6), rgba(var(--zai-glow-color), 1));
+  z-index: var(--zai-z-toast);
+  transition: width 50ms linear;
+}
+.zai-scroll-progress::after {
+  content: '';
+  position: absolute;
+  right: 0; top: -1px;
+  width: 40px; height: 4px;
+  background: rgba(var(--zai-glow-color), 0.8);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(var(--zai-glow-color), 0.5);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   DIVIDERS
+   ═══════════════════════════════════════════════════════════ */
+.zai-divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--zai-glow-color), 0.3), transparent);
+  border: none;
+  position: relative;
+}
+
+.zai-divider-animated {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--zai-glow-color), 0.4), transparent);
+  background-size: 200% 100%;
+  animation: zai-divider-sweep 3s ease-in-out infinite;
+  border: none;
+}
+
+.zai-divider-dot {
+  display: flex;
+  align-items: center;
+  gap: var(--zai-space-2);
+}
+.zai-divider-dot::before,
+.zai-divider-dot::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--zai-glow-color), 0.2));
+}
+.zai-divider-dot::after {
+  background: linear-gradient(90deg, rgba(var(--zai-glow-color), 0.2), transparent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CURSOR / TYPING
+   ═══════════════════════════════════════════════════════════ */
+.zai-cursor-blink::after {
+  content: '|';
+  animation: zai-cursor-blink 1s step-end infinite;
+  color: var(--zai-color-accent);
+}
+
+.zai-typing-cursor {
+  display: inline;
+}
+.zai-typing-cursor::after {
+  content: '\2588';
+  animation: zai-cursor-blink 1s step-end infinite;
+  color: var(--zai-color-accent);
+  margin-left: 2px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BACKGROUND PATTERNS
+   ═══════════════════════════════════════════════════════════ */
+.zai-bg-grid {
+  background-image:
+    linear-gradient(rgba(var(--zai-glow-color), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--zai-glow-color), 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.zai-bg-dots {
+  background-image: radial-gradient(circle, rgba(var(--zai-glow-color), 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.zai-bg-dots-lg {
+  background-image: radial-gradient(circle, rgba(var(--zai-glow-color), 0.06) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+}
+
+.zai-bg-noise {
+  position: relative;
+}
+.zai-bg-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.zai-bg-mesh-gradient {
+  background:
+    radial-gradient(at 20% 80%, rgba(var(--zai-glow-color), 0.08) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(var(--zai-glow-color), 0.06) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(var(--zai-glow-color), 0.04) 0%, transparent 50%);
+  animation: zai-gradient-shift 20s ease infinite;
+  background-size: 200% 200%;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   HOVER / INTERACTION
+   ═══════════════════════════════════════════════════════════ */
+.zai-hover-glow-border {
+  position: relative;
+  overflow: hidden;
+}
+.zai-hover-glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--zai-spin-angle, 0deg), transparent 40%, rgba(var(--zai-glow-color), 0.4) 50%, transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--zai-duration-normal) var(--zai-easing-default);
+}
+.zai-hover-glow-border:hover::before {
+  opacity: 1;
+  animation: zai-spin 3s linear infinite;
+}
+
+.zai-hover-underline {
+  position: relative;
+  text-decoration: none;
+}
+.zai-hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width var(--zai-duration-normal) var(--zai-easing-default);
+}
+.zai-hover-underline:hover::after {
+  width: 100%;
+}
+
+.zai-hover-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Focus states */
+.zai-focus-ring:focus-visible {
+  outline: 2px solid rgba(var(--zai-glow-color), 0.5);
+  outline-offset: 2px;
+}
+
+.zai-focus-glow:focus-visible {
+  box-shadow: 0 0 0 2px rgba(var(--zai-glow-color), 0.2), 0 0 8px rgba(var(--zai-glow-color), 0.15);
+  outline: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   RETRO / TERMINAL
+   ═══════════════════════════════════════════════════════════ */
+.zai-retro-scanlines {
+  position: relative;
+}
+.zai-retro-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+.zai-crt-vignette {
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.3);
+}
+
+.zai-amber-text {
+  color: #d4a017;
+}
+
+.zai-amber-glow {
+  color: #d4a017;
+  text-shadow: 0 0 8px rgba(212, 160, 23, 0.5);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   TRANSITIONS
+   ═══════════════════════════════════════════════════════════ */
+.zai-transition-smooth {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.zai-transition-bounce {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.zai-transition-slow {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   ACCESSIBILITY — prefers-reduced-motion
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .zai-glass-card-shimmer::before,
+  .zai-card-border-spin::before,
+  .zai-badge-section::before,
+  .zai-hover-glow-border::before {
+    animation: none !important;
+  }
+
+  .zai-card-lift:hover { transform: none; }
+  .zai-card-breathe { animation: none; }
+  .zai-skeleton,
+  .zai-skeleton-rounded,
+  .zai-skeleton-circle { animation: none; }
+  .zai-loading-dots span { animation: none; }
+  .zai-loading-ring { animation: none; }
+
+  .zai-gradient-text-animated,
+  .zai-prism-text,
+  .zai-text-shimmer { animation: none; }
+
+  .zai-divider-animated { animation: none; }
+  .zai-scroll-progress::after { box-shadow: none; }
+
+  .zai-hover-underline::after { transition: none; }
+  .zai-transition-smooth,
+  .zai-transition-bounce,
+  .zai-transition-slow { transition: none; }
+}
