@@ -118,8 +118,78 @@ export interface TypographyTokens {
 }
 
 export interface LayoutTokens {
+  // Parametric dimensions
+  'sidebar-w': string
+  'sidebar-xl': string
+  'header-h': string
+  'footer-h': string
+  'hero-h': string
+  'card-min': string
+
+  // Column templates
+  'cols-equal-2': string
+  'cols-equal-3': string
+  'cols-equal-4': string
+  'cols-equal-5': string
+  'cols-equal-6': string
+  'cols-equal-8': string
+  'cols-fib-4': string
+  'cols-fib-5': string
+  'cols-fib-3rev': string
+  'cols-fib-4rev': string
+  'cols-golden': string
+  'cols-prime-4': string
+  'cols-sqrt': string
+  'cols-root2': string
+  'cols-harmonic': string
+  'cols-2-1-1': string
+  'cols-hero': string
+  'cols-sidebar-l': string
+  'cols-sidebar-r': string
+  'cols-sidebar-xl': string
+  'cols-holy-grail': string
+  'cols-holy-grail-fib': string
+  'cols-auto-fit': string
+
+  // Row templates
+  'rows-header-content-footer': string
+  'rows-header-content': string
+  'rows-hero-content': string
+  'rows-hero-grid': string
+  'rows-equal-2': string
+  'rows-equal-3': string
+  'rows-equal-4': string
+  'rows-equal-5': string
+  'rows-fib-3': string
+  'rows-fib-4': string
+  'rows-fib-4rev': string
+  'rows-golden': string
+  'rows-golden-inv': string
+  'rows-magazine': string
+  'rows-spiral': string
+  'rows-dashboard': string
+  'rows-dyn-sym': string
+
+  // Gap scale (dual base: 4px compact + 8px phi-layout)
+  'gap-none': string
+  'gap-xs': string
+  'gap-sm': string
+  'gap-md': string
+  'gap-lg': string
+  'gap-xl': string
+  'gap-2xl': string
+  'gap-3xl': string
+
+  // Auto props
+  'auto-rows-sm': string
+  'auto-rows-md': string
+  'auto-rows-equal': string
+
+  // Constants
   'phi': string
   'phi-inv': string
+
+  // Deprecated (backward compat)
   'grid-cols-golden': string
   'grid-cols-fibonacci': string
   'grid-gap': string

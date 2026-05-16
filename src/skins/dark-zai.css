@@ -129,14 +129,121 @@
   --zai-line-height-normal: 1.5;
   --zai-line-height-relaxed: 1.75;
 
-  /* ── Layout (golden ratio) ────────────────────────────── */
+  /* ── Layout: Parametric Dimensions ──────────────────── */
+  --zai-sidebar-w: 50px;
+  --zai-sidebar-xl: 70px;
+  --zai-header-h: 35px;
+  --zai-footer-h: 25px;
+  --zai-hero-h: 80px;
+  --zai-card-min: 50px;
+
+  /* ── Layout: Column Templates ────────────────────────── */
+  /* Equal */
+  --zai-cols-equal-2: 1fr 1fr;
+  --zai-cols-equal-3: repeat(3, 1fr);
+  --zai-cols-equal-4: repeat(4, 1fr);
+  --zai-cols-equal-5: repeat(5, 1fr);
+  --zai-cols-equal-6: repeat(6, 1fr);
+  --zai-cols-equal-8: repeat(8, 1fr);
+
+  /* Fibonacci */
+  --zai-cols-fib-4: 1fr 2fr 3fr 5fr;
+  --zai-cols-fib-5: 1fr 1fr 2fr 3fr 5fr;
+  --zai-cols-fib-3rev: 8fr 5fr 3fr;
+  --zai-cols-fib-4rev: 5fr 3fr 2fr 1fr;
+
+  /* Golden ratio */
+  --zai-cols-golden: 1fr 1.618fr;
+
+  /* Mathematical */
+  --zai-cols-prime-4: 2fr 3fr 5fr 7fr;
+  --zai-cols-sqrt: 1fr 1.414fr 1.732fr 2fr;
+  --zai-cols-root2: 1.414fr 1fr;
+  --zai-cols-harmonic: 1fr 0.5fr 0.333fr 0.25fr;
+
+  /* Asymmetric */
+  --zai-cols-2-1-1: 2fr 1fr 1fr;
+
+  /* Hero */
+  --zai-cols-hero: 2fr 1fr;
+
+  /* Sidebar */
+  --zai-cols-sidebar-l: var(--zai-sidebar-w) 1fr;
+  --zai-cols-sidebar-r: 1fr var(--zai-sidebar-w);
+  --zai-cols-sidebar-xl: var(--zai-sidebar-xl) 1fr;
+  --zai-cols-holy-grail: var(--zai-sidebar-w) 1fr var(--zai-sidebar-w);
+  --zai-cols-holy-grail-fib: 3fr 13fr 5fr;
+
+  /* Responsive */
+  --zai-cols-auto-fit: repeat(auto-fit, minmax(var(--zai-card-min), 1fr));
+
+  /* From phi-layout skill */
+  --zai-cols-spiral: 34fr 21fr 13fr 8fr 5fr 3fr 2fr 1fr;
+  --zai-cols-phi-12: repeat(12, 1fr);
+  --zai-cols-timeline: 3.82fr 1fr 5.18fr;
+  --zai-cols-zeitgeist: 1fr 1.618fr 1fr;
+  --zai-cols-dyn-sym: 1fr 2.236fr;
+  --zai-cols-golden-inv: 1.618fr 1fr;
+  --zai-cols-dashboard: 3fr 5fr 2fr;
+  --zai-cols-magazine: 5fr 3fr 2fr;
+
+  /* ── Layout: Row Templates ───────────────────────────── */
+  --zai-rows-header-content-footer: var(--zai-header-h) 1fr var(--zai-footer-h);
+  --zai-rows-header-content: var(--zai-header-h) 1fr;
+  --zai-rows-hero-content: 2fr 1fr;
+  --zai-rows-hero-grid: var(--zai-hero-h) 1fr;
+  --zai-rows-equal-2: repeat(2, 1fr);
+  --zai-rows-equal-3: repeat(3, 1fr);
+  --zai-rows-equal-4: repeat(4, 1fr);
+  --zai-rows-equal-5: repeat(5, 1fr);
+  --zai-rows-fib-3: 8fr 5fr 3fr;
+  --zai-rows-fib-4: 1fr 2fr 3fr 5fr;
+  --zai-rows-fib-4rev: 5fr 3fr 2fr 1fr;
+
+  /* Golden ratio rows (canonical) */
+  --zai-rows-golden: 1fr 1.618fr;
+  --zai-rows-golden-inv: 1.618fr 1fr;
+  --zai-rows-magazine: var(--zai-header-h) repeat(2, 1fr) var(--zai-footer-h);
+
+  /* Spiral rows */
+  --zai-rows-spiral: 34fr 21fr 13fr;
+
+  /* Dashboard rows */
+  --zai-rows-dashboard: auto 1fr 1.618fr;
+
+  /* Dynamic Symmetry rows */
+  --zai-rows-dyn-sym: 1fr 2.236fr;
+
+  /* From phi-layout skill */
+  --zai-rows-timeline: 3.82fr 1fr 5.18fr;
+  --zai-rows-zeitgeist: 1fr 1.618fr 1fr;
+  --zai-rows-sacred: 1fr 1.618fr 1fr;
+
+  /* ── Layout: Gap Scale ───────────────────────────────── */
+  --zai-gap-none: 0;
+  --zai-gap-xs: var(--zai-space-1);      /* 4px */
+  --zai-gap-sm: var(--zai-space-2);      /* 8px */
+  --zai-gap-md: var(--zai-space-3);      /* 12px */
+  --zai-gap-lg: var(--zai-space-5);      /* 20px */
+  --zai-gap-xl: 2.5rem;                  /* 40px = Fib-val 5, section-level */
+  --zai-gap-2xl: 4rem;                   /* 64px = Fib-val 8, major divisions */
+  --zai-gap-3xl: 6.5rem;                 /* 104px = Fib-val 13, page-level */
+
+  /* ── Layout: Auto Props ──────────────────────────────── */
+  --zai-auto-rows-sm: var(--zai-space-5);    /* 20px */
+  --zai-auto-rows-md: var(--zai-space-8);    /* 32px */
+  --zai-auto-rows-equal: 1fr;
+
+  /* ── Layout: Constants (golden ratio) ─────────────────── */
   --zai-phi: 1.618;
   --zai-phi-inv: 0.618;
-  --zai-grid-cols-golden: 1fr 1.618fr;
-  --zai-grid-cols-fibonacci: 1fr 2fr 3fr 5fr;
-  --zai-grid-gap: var(--zai-space-5);      /* Fib(4) = 20px */
-  --zai-grid-gap-sm: var(--zai-space-3);   /* Fib(3) = 12px */
-  --zai-grid-gap-lg: var(--zai-space-8);   /* Fib(5) = 32px */
+
+  /* ── DEPRECATED (kept for backward compat, use --zai-cols-* instead) ── */
+  --zai-grid-cols-golden: var(--zai-cols-golden);
+  --zai-grid-cols-fibonacci: var(--zai-cols-fib-4);
+  --zai-grid-gap: var(--zai-gap-lg);       /* = space-5 = 20px */
+  --zai-grid-gap-sm: var(--zai-gap-md);    /* = space-3 = 12px */
+  --zai-grid-gap-lg: var(--zai-gap-lg);    /* = space-8 = 32px */
 
   /* ── Z-index ──────────────────────────────────────────── */
   --zai-z-dropdown: 1000;

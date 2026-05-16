@@ -136,14 +136,93 @@ export const TOKEN = {
   LINE_HEIGHT_NORMAL: '--zai-line-height-normal',
   LINE_HEIGHT_RELAXED: '--zai-line-height-relaxed',
 
-  // ── Layout (golden ratio) ───────────────────────────────
+  // ── Layout: Parametric Dimensions ───────────────────────
+  SIDEBAR_W: '--zai-sidebar-w',
+  SIDEBAR_XL: '--zai-sidebar-xl',
+  HEADER_H: '--zai-header-h',
+  FOOTER_H: '--zai-footer-h',
+  HERO_H: '--zai-hero-h',
+  CARD_MIN: '--zai-card-min',
+
+  // ── Layout: Column Templates ─────────────────────────────
+  // Equal
+  COLS_EQUAL_2: '--zai-cols-equal-2',
+  COLS_EQUAL_3: '--zai-cols-equal-3',
+  COLS_EQUAL_4: '--zai-cols-equal-4',
+  COLS_EQUAL_5: '--zai-cols-equal-5',
+  COLS_EQUAL_6: '--zai-cols-equal-6',
+  COLS_EQUAL_8: '--zai-cols-equal-8',
+  // Fibonacci
+  COLS_FIB_4: '--zai-cols-fib-4',
+  COLS_FIB_5: '--zai-cols-fib-5',
+  COLS_FIB_3REV: '--zai-cols-fib-3rev',
+  COLS_FIB_4REV: '--zai-cols-fib-4rev',
+  // Golden
+  COLS_GOLDEN: '--zai-cols-golden',
+
+  // Hero
+  COLS_HERO: '--zai-cols-hero',
+
+  // Mathematical
+  COLS_PRIME_4: '--zai-cols-prime-4',
+  COLS_SQRT: '--zai-cols-sqrt',
+  COLS_ROOT_2: '--zai-cols-root2',
+  COLS_HARMONIC: '--zai-cols-harmonic',
+  // Asymmetric
+  COLS_ASYM_2_1_1: '--zai-cols-2-1-1',
+  // Sidebar
+  COLS_SIDEBAR_L: '--zai-cols-sidebar-l',
+  COLS_SIDEBAR_R: '--zai-cols-sidebar-r',
+  COLS_SIDEBAR_XL: '--zai-cols-sidebar-xl',
+  COLS_HOLY_GRAIL: '--zai-cols-holy-grail',
+  COLS_HOLY_GRAIL_FIB: '--zai-cols-holy-grail-fib',
+  // Responsive
+  COLS_AUTO_FIT: '--zai-cols-auto-fit',
+
+  // ── Layout: Row Templates ────────────────────────────────
+  ROWS_HEADER_CONTENT_FOOTER: '--zai-rows-header-content-footer',
+  ROWS_HEADER_CONTENT: '--zai-rows-header-content',
+  ROWS_HERO_CONTENT: '--zai-rows-hero-content',
+  ROWS_HERO_GRID: '--zai-rows-hero-grid',
+  ROWS_EQUAL_2: '--zai-rows-equal-2',
+  ROWS_EQUAL_3: '--zai-rows-equal-3',
+  ROWS_EQUAL_4: '--zai-rows-equal-4',
+  ROWS_EQUAL_5: '--zai-rows-equal-5',
+  ROWS_FIB_3: '--zai-rows-fib-3',
+  ROWS_FIB_4: '--zai-rows-fib-4',
+  ROWS_FIB_4REV: '--zai-rows-fib-4rev',
+  ROWS_GOLDEN: '--zai-rows-golden',
+  ROWS_GOLDEN_INV: '--zai-rows-golden-inv',
+  ROWS_MAGAZINE: '--zai-rows-magazine',
+  ROWS_SPIRAL: '--zai-rows-spiral',
+  ROWS_DASHBOARD: '--zai-rows-dashboard',
+  ROWS_DYN_SYM: '--zai-rows-dyn-sym',
+
+  // ── Layout: Gap Scale ────────────────────────────────────
+  GAP_NONE: '--zai-gap-none',
+  GAP_XS: '--zai-gap-xs',
+  GAP_SM: '--zai-gap-sm',
+  GAP_MD: '--zai-gap-md',
+  GAP_LG: '--zai-gap-lg',
+  GAP_XL: '--zai-gap-xl',
+  GAP_2XL: '--zai-gap-2xl',
+  GAP_3XL: '--zai-gap-3xl',
+
+  // ── Layout: Auto Props ───────────────────────────────────
+  AUTO_ROWS_SM: '--zai-auto-rows-sm',
+  AUTO_ROWS_MD: '--zai-auto-rows-md',
+  AUTO_ROWS_EQUAL: '--zai-auto-rows-equal',
+
+  // ── Layout: Constants ────────────────────────────────────
   PHI: '--zai-phi',         // 1.618
   PHI_INV: '--zai-phi-inv', // 0.618
-  GRID_COLS_GOLDEN: '--zai-grid-cols-golden',     // 1fr 1.618fr
-  GRID_COLS_FIBONACCI: '--zai-grid-cols-fibonacci', // 1fr 2fr 3fr 5fr
-  GRID_GAP: '--zai-grid-gap',     // = space-5 (Fib)
-  GRID_GAP_SM: '--zai-grid-gap-sm', // = space-3 (Fib)
-  GRID_GAP_LG: '--zai-grid-gap-lg', // = space-8 (Fib)
+
+  // ── DEPRECATED Layout (use COLS_*/ROWS_*/GAP_* instead) ──
+  GRID_COLS_GOLDEN: '--zai-grid-cols-golden',
+  GRID_COLS_FIBONACCI: '--zai-grid-cols-fibonacci',
+  GRID_GAP: '--zai-grid-gap',
+  GRID_GAP_SM: '--zai-grid-gap-sm',
+  GRID_GAP_LG: '--zai-grid-gap-lg',
 
   // ── Z-index ─────────────────────────────────────────────
   Z_DROPDOWN: '--zai-z-dropdown',
@@ -180,3 +259,7 @@ export type TokenValue = typeof TOKEN[TokenKey]
 
 // Re-export types from separate file
 export * from './types'
+
+// Re-export layout token system
+export * from './layout-tokens'
+export * from './layout-patterns'
