@@ -1,0 +1,162 @@
+/**
+ * @zai/ui-kit — Tokens: Visual Presets
+ * Palette, shadow, gradient presets as CSS custom properties
+ * Harvested from Code-Realm generators
+ *
+ * Usage: import '@zai/ui-kit/tokens/presets.css'
+ * Then: box-shadow: var(--zai-shadow-neon)
+ *        background: var(--zai-gradient-aurora)
+ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════
+     PALETTE PRESETS (8 palettes, 5 colors each)
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Sunset */
+  --zai-palette-sunset-1: #ff6b35;
+  --zai-palette-sunset-2: #f7c948;
+  --zai-palette-sunset-3: #ff006e;
+  --zai-palette-sunset-4: #e63946;
+  --zai-palette-sunset-5: #ffb703;
+
+  /* Ocean */
+  --zai-palette-ocean-1: #0077b6;
+  --zai-palette-ocean-2: #00b4d8;
+  --zai-palette-ocean-3: #90e0ef;
+  --zai-palette-ocean-4: #023e8a;
+  --zai-palette-ocean-5: #48cae4;
+
+  /* Forest */
+  --zai-palette-forest-1: #2d6a4f;
+  --zai-palette-forest-2: #40916c;
+  --zai-palette-forest-3: #52b788;
+  --zai-palette-forest-4: #1b4332;
+  --zai-palette-forest-5: #95d5b2;
+
+  /* Neon */
+  --zai-palette-neon-1: #ff00ff;
+  --zai-palette-neon-2: #00ffff;
+  --zai-palette-neon-3: #39ff14;
+  --zai-palette-neon-4: #ff3131;
+  --zai-palette-neon-5: #f5ff00;
+
+  /* Pastel */
+  --zai-palette-pastel-1: #ffc8dd;
+  --zai-palette-pastel-2: #bde0fe;
+  --zai-palette-pastel-3: #a2d2ff;
+  --zai-palette-pastel-4: #cdb4db;
+  --zai-palette-pastel-5: #ffafcc;
+
+  /* Earth */
+  --zai-palette-earth-1: #6b4226;
+  --zai-palette-earth-2: #d4a373;
+  --zai-palette-earth-3: #ccd5ae;
+  --zai-palette-earth-4: #e9edc9;
+  --zai-palette-earth-5: #a98467;
+
+  /* Candy */
+  --zai-palette-candy-1: #f72585;
+  --zai-palette-candy-2: #7209b7;
+  --zai-palette-candy-3: #3a0ca3;
+  --zai-palette-candy-4: #4361ee;
+  --zai-palette-candy-5: #4cc9f0;
+
+  /* Midnight */
+  --zai-palette-midnight-1: #0d1b2a;
+  --zai-palette-midnight-2: #1b263b;
+  --zai-palette-midnight-3: #415a77;
+  --zai-palette-midnight-4: #778da9;
+  --zai-palette-midnight-5: #e0e1dd;
+
+  /* Retro Terminal */
+  --zai-palette-retro-cream: #f5f0e1;
+  --zai-palette-retro-black: #1a1a1a;
+  --zai-palette-retro-amber: #d4a017;
+  --zai-palette-retro-dark-amber: #b8860b;
+  --zai-palette-retro-muted: #6b6356;
+  --zai-palette-retro-red: #c23616;
+  --zai-palette-retro-green: #2d6a4f;
+
+
+  /* ═══════════════════════════════════════════════════════════
+     SHADOW PRESETS
+     ═══════════════════════════════════════════════════════════ */
+  --zai-shadow-soft-glow:    0 0 20px 5px rgba(var(--zai-glow-color), 0.3);
+  --zai-shadow-hard-edge:    4px 4px 0px rgba(0, 0, 0, 1);
+  --zai-shadow-neon:         0 0 10px #d4a017, 0 0 20px #d4a017, 0 0 40px #b8860b;
+  --zai-shadow-long:         6px 6px 0px rgba(0,0,0,0.5), 12px 12px 0px rgba(0,0,0,0.25);
+  --zai-shadow-floating:     0 20px 60px rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.2);
+  --zai-shadow-pressed:      inset 4px 4px 8px rgba(0,0,0,0.5), inset -2px -2px 4px rgba(255,255,255,0.1);
+  --zai-shadow-inner-glow:   inset 0 0 20px rgba(var(--zai-glow-color), 0.5);
+  --zai-shadow-layered:      0 1px 2px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07);
+  --zai-shadow-crisp:        0 2px 0px rgba(0, 0, 0, 0.8);
+  --zai-shadow-dreamy:       0 0 30px 10px rgba(107,99,86,0.3), 0 0 60px 20px rgba(194,54,22,0.15);
+  --zai-shadow-retro:        8px 8px 0px rgba(245, 158, 11, 0.8);
+  --zai-shadow-holographic:  0 0 15px rgba(184,134,11,0.4), 0 0 30px rgba(107,99,86,0.3), 0 0 45px rgba(194,54,22,0.2);
+
+  /* Neon shadows by color */
+  --zai-shadow-neon-emerald: 0 0 10px #10b981, 0 0 20px #10b981, 0 0 40px #059669;
+  --zai-shadow-neon-cyan:    0 0 10px #06b6d4, 0 0 20px #06b6d4, 0 0 40px #0891b2;
+  --zai-shadow-neon-purple:  0 0 10px #8b5cf6, 0 0 20px #8b5cf6, 0 0 40px #7c3aed;
+  --zai-shadow-neon-amber:   0 0 10px #d4a017, 0 0 20px #d4a017, 0 0 40px #b8860b;
+
+
+  /* ═══════════════════════════════════════════════════════════
+     GRADIENT PRESETS
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Linear gradients */
+  --zai-gradient-sunset:   linear-gradient(135deg, #ff6b35, #f7c948, #ff006e, #8338ec);
+  --zai-gradient-ocean:    linear-gradient(180deg, #0077b6, #00b4d8, #90e0ef, #caf0f8);
+  --zai-gradient-aurora:   linear-gradient(135deg, #00f5d4, #00bbf9, #9b5de5, #f15bb5);
+  --zai-gradient-neon:     linear-gradient(90deg,  #ff00ff, #00ffff, #ff00ff);
+  --zai-gradient-forest:   linear-gradient(160deg, #2d6a4f, #40916c, #52b788, #95d5b2);
+  --zai-gradient-lavender: linear-gradient(135deg, #e0aaff, #c77dff, #9d4edd, #7b2cbf);
+  --zai-gradient-midnight: linear-gradient(180deg, #0d1b2a, #1b263b, #415a77, #778da9);
+
+  /* Radial gradients */
+  --zai-gradient-peach:    radial-gradient(ellipse, #ffbe0b, #fb5607, #ff006e, #8338ec);
+  --zai-gradient-spotlight: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(var(--zai-glow-color), 0.08), transparent 60%);
+
+  /* Conic gradients */
+  --zai-gradient-conic:    conic-gradient(from 0deg, #10b981, #06b6d4, #8b5cf6, #f43f5e, #10b981);
+  --zai-gradient-conic-spin: conic-gradient(from var(--zai-spin-angle, 0deg), transparent 30%, rgba(var(--zai-glow-color), 0.5) 50%, transparent 70%);
+
+  /* Mesh gradients (multi-radial) */
+  --zai-gradient-mesh:     radial-gradient(at 20% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                           radial-gradient(at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                           radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+
+
+  /* ═══════════════════════════════════════════════════════════
+     BORDER PRESETS
+     ═══════════════════════════════════════════════════════════ */
+  --zai-border-gradient:    1px solid transparent;
+  --zai-border-dashed:      1px dashed rgba(var(--zai-glow-color), 0.3);
+  --zai-border-glow:        1px solid rgba(var(--zai-glow-color), 0.3);
+  --zai-border-subtle:      1px solid rgba(var(--zai-glow-color), 0.08);
+
+
+  /* ═══════════════════════════════════════════════════════════
+     FILTER PRESETS
+     ═══════════════════════════════════════════════════════════ */
+  --zai-filter-blur-sm:     blur(4px);
+  --zai-filter-blur-md:     blur(12px);
+  --zai-filter-blur-lg:     blur(24px);
+  --zai-filter-saturate:    saturate(1.5);
+  --zai-filter-grayscale:   grayscale(1);
+  --zai-filter-sepia:       sepia(0.5);
+  --zai-filter-brightness:  brightness(1.2);
+  --zai-filter-contrast:    contrast(1.1);
+  --zai-filter-hue-rotate:  hue-rotate(30deg);
+  --zai-filter-invert:      invert(1);
+
+
+  /* ═══════════════════════════════════════════════════════════
+     BACKDROP FILTER PRESETS
+     ═══════════════════════════════════════════════════════════ */
+  --zai-backdrop-glass:     blur(var(--zai-glass-blur)) saturate(var(--zai-glass-saturate));
+  --zai-backdrop-frost:     blur(16px) saturate(1.8);
+  --zai-backdrop-heavy:     blur(40px) saturate(2);
+}

@@ -1,0 +1,446 @@
+/**
+ * @zai/ui-kit — Tokens: Animations
+ * 30+ keyframe animations harvested from Code-Realm
+ * All namespaced under --zai-anim-*
+ *
+ * Usage: import '@zai/ui-kit/tokens/animations.css'
+ * Then apply via: animation: var(--zai-anim-breathe) or class .zai-animate-breathe
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Core: Fade / Reveal ──────────────────────────────── */
+@keyframes zai-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes zai-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes zai-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zai-blur-reveal {
+  from { opacity: 0; filter: blur(8px); transform: translateY(8px); }
+  to   { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes zai-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Pulse / Breathe ──────────────────────────────────── */
+@keyframes zai-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); }
+}
+
+@keyframes zai-pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(var(--zai-glow-color), 0.2); }
+  50%      { box-shadow: 0 0 16px rgba(var(--zai-glow-color), 0.5); }
+}
+
+@keyframes zai-pulse-border {
+  0%, 100% { border-color: rgba(var(--zai-glow-color), 0.2); }
+  50%      { border-color: rgba(var(--zai-glow-color), 0.6); }
+}
+
+@keyframes zai-status-ping {
+  0%   { transform: scale(1); opacity: 1; }
+  75%  { transform: scale(2); opacity: 0; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes zai-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* ── Shimmer / Sweep ──────────────────────────────────── */
+@keyframes zai-shimmer-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes zai-shimmer-hue {
+  0%   { --zai-shimmer-hue: 0deg; filter: hue-rotate(0deg); }
+  100% { --zai-shimmer-hue: 360deg; filter: hue-rotate(360deg); }
+}
+
+@keyframes zai-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes zai-card-shine {
+  from { left: -100%; }
+  to   { left: 200%; }
+}
+
+/* ── Float / Drift ────────────────────────────────────── */
+@keyframes zai-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes zai-float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+@keyframes zai-orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%      { transform: translate(30px, -20px) scale(1.05); }
+  50%      { transform: translate(-10px, -30px) scale(0.95); }
+  75%      { transform: translate(-30px, 10px) scale(1.02); }
+}
+
+/* ── Neon / Glow ──────────────────────────────────────── */
+@keyframes zai-neon-pulse {
+  0%, 100% { text-shadow: 0 0 4px currentColor, 0 0 8px currentColor; }
+  50%      { text-shadow: 0 0 8px currentColor, 0 0 16px currentColor, 0 0 32px currentColor; }
+}
+
+@keyframes zai-neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+@keyframes zai-border-glow {
+  0%   { border-color: rgba(var(--zai-glow-color), 0.3); }
+  33%  { border-color: rgba(var(--zai-glow-color), 0.8); }
+  66%  { border-color: rgba(var(--zai-glow-color), 0.1); }
+  100% { border-color: rgba(var(--zai-glow-color), 0.3); }
+}
+
+/* ── Spin / Rotate ────────────────────────────────────── */
+@keyframes zai-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes zai-conic-spin {
+  from { --zai-spin-angle: 0deg; }
+  to   { --zai-spin-angle: 360deg; }
+}
+
+@keyframes zai-loading-ring {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Cursor / Typing ──────────────────────────────────── */
+@keyframes zai-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes zai-typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ── Bounce / Shake ───────────────────────────────────── */
+@keyframes zai-bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+@keyframes zai-shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-4px); }
+  75%      { transform: translateX(4px); }
+}
+
+/* ── Loading ──────────────────────────────────────────── */
+@keyframes zai-loading-dots {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+  40%           { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zai-skeleton-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes zai-progress-fill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ── Glitch ───────────────────────────────────────────── */
+@keyframes zai-glitch-1 {
+  0%   { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 2px); }
+  20%  { clip-path: inset(92% 0 1% 0);  transform: translate(1px, -1px); }
+  40%  { clip-path: inset(43% 0 1% 0);  transform: translate(-1px, 3px); }
+  60%  { clip-path: inset(25% 0 58% 0); transform: translate(3px, 1px); }
+  80%  { clip-path: inset(54% 0 7% 0);  transform: translate(-3px, -2px); }
+  100% { clip-path: inset(58% 0 43% 0); transform: translate(2px, -3px); }
+}
+
+@keyframes zai-glitch-2 {
+  0%   { clip-path: inset(65% 0 13% 0); transform: translate(2px, -1px); }
+  20%  { clip-path: inset(17% 0 63% 0); transform: translate(-3px, 2px); }
+  40%  { clip-path: inset(79% 0 2% 0);  transform: translate(1px, -2px); }
+  60%  { clip-path: inset(33% 0 45% 0); transform: translate(-2px, 1px); }
+  80%  { clip-path: inset(5% 0 76% 0);  transform: translate(3px, 3px); }
+  100% { clip-path: inset(14% 0 62% 0); transform: translate(-1px, -1px); }
+}
+
+@keyframes zai-glitch-skew {
+  0%   { transform: skew(0deg); }
+  20%  { transform: skew(-2deg); }
+  40%  { transform: skew(0.5deg); }
+  60%  { transform: skew(-0.5deg); }
+  80%  { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+/* ── Retro / CRT ──────────────────────────────────────── */
+@keyframes zai-scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes zai-matrix-fall {
+  0%   { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ── Aurora / Blob ────────────────────────────────────── */
+@keyframes zai-aurora {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@keyframes zai-blob-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%      { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+  75%      { border-radius: 60% 40% 60% 30% / 60% 30% 40% 70%; }
+}
+
+/* ── Gradient Text ────────────────────────────────────── */
+@keyframes zai-gradient-text {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes zai-prism-text {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Marquee ──────────────────────────────────────────── */
+@keyframes zai-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Ripple ───────────────────────────────────────────── */
+@keyframes zai-ripple {
+  0%   { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+@keyframes zai-divider-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATION CUSTOM PROPERTIES
+   Usage: animation: var(--zai-anim-breathe)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Core */
+  --zai-anim-fade-in:        zai-fade-in 0.3s ease-out both;
+  --zai-anim-fade-up:        zai-fade-up 0.4s ease-out both;
+  --zai-anim-blur-reveal:    zai-blur-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --zai-anim-scale-in:       zai-scale-in 0.3s ease-out both;
+
+  /* Pulse / Breathe */
+  --zai-anim-breathe:        zai-breathe 4s ease-in-out infinite;
+  --zai-anim-pulse-glow:     zai-pulse-glow 2.5s ease-in-out infinite;
+  --zai-anim-pulse-border:   zai-pulse-border 3s ease-in-out infinite;
+  --zai-anim-status-ping:    zai-status-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --zai-anim-dot-pulse:      zai-dot-pulse 2s ease-in-out infinite;
+
+  /* Shimmer */
+  --zai-anim-shimmer:        zai-shimmer-sweep 2s ease-in-out infinite;
+  --zai-anim-gradient-shift: zai-gradient-shift 8s ease infinite;
+
+  /* Float */
+  --zai-anim-float:          zai-float 6s ease-in-out infinite;
+  --zai-anim-float-gentle:   zai-float-gentle 6s ease-in-out infinite;
+  --zai-anim-orb-drift:      zai-orb-drift 12s ease-in-out infinite;
+
+  /* Neon */
+  --zai-anim-neon-pulse:     zai-neon-pulse 2s ease-in-out infinite;
+  --zai-anim-neon-flicker:   zai-neon-flicker 3s ease-in-out infinite;
+  --zai-anim-border-glow:    zai-border-glow 4s ease-in-out infinite;
+
+  /* Spin */
+  --zai-anim-spin:           zai-spin 1s linear infinite;
+  --zai-anim-loading-ring:   zai-loading-ring 0.9s linear infinite;
+
+  /* Cursor */
+  --zai-anim-cursor-blink:   zai-cursor-blink 1s step-end infinite;
+  --zai-anim-typing:         zai-typing 2s steps(30) forwards;
+
+  /* Bounce */
+  --zai-anim-bounce:         zai-bounce-subtle 1.5s ease-in-out infinite;
+  --zai-anim-shake:          zai-shake 0.5s ease-in-out;
+
+  /* Loading */
+  --zai-anim-loading-dots:   zai-loading-dots 1.4s ease-in-out infinite;
+  --zai-anim-skeleton:       zai-skeleton-shimmer 1.8s ease-in-out infinite;
+  --zai-anim-progress:       zai-progress-fill 2s ease-in-out infinite;
+
+  /* Glitch */
+  --zai-anim-glitch-1:       zai-glitch-1 2s linear infinite;
+  --zai-anim-glitch-2:       zai-glitch-2 2s linear infinite;
+  --zai-anim-glitch-skew:    zai-glitch-skew 0.3s ease-in-out;
+
+  /* Retro */
+  --zai-anim-scanline:       zai-scanline 6s linear infinite;
+  --zai-anim-matrix-fall:    zai-matrix-fall 8s linear infinite;
+
+  /* Aurora */
+  --zai-anim-aurora:         zai-aurora 10s ease infinite;
+  --zai-anim-blob-morph:     zai-blob-morph 8s ease-in-out infinite;
+
+  /* Text */
+  --zai-anim-gradient-text:  zai-gradient-text 5s ease infinite;
+  --zai-anim-prism-text:     zai-prism-text 6s ease infinite;
+
+  /* Marquee */
+  --zai-anim-marquee:        zai-marquee 20s linear infinite;
+
+  /* Ripple */
+  --zai-anim-ripple:         zai-ripple 0.6s ease-out;
+
+  /* Divider */
+  --zai-anim-divider-sweep:  zai-divider-sweep 3s ease-in-out infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   Usage: <div className="zai-animate-breathe">
+   ═══════════════════════════════════════════════════════════ */
+
+/* Core */
+.zai-animate-fade-in      { animation: var(--zai-anim-fade-in); }
+.zai-animate-fade-up      { animation: var(--zai-anim-fade-up); }
+.zai-animate-blur-reveal  { animation: var(--zai-anim-blur-reveal); }
+.zai-animate-scale-in     { animation: var(--zai-anim-scale-in); }
+
+/* Pulse / Breathe */
+.zai-animate-breathe      { animation: var(--zai-anim-breathe); }
+.zai-animate-pulse-glow   { animation: var(--zai-anim-pulse-glow); }
+.zai-animate-pulse-border { animation: var(--zai-anim-pulse-border); }
+.zai-animate-dot-pulse    { animation: var(--zai-anim-dot-pulse); }
+
+/* Shimmer */
+.zai-animate-shimmer      { animation: var(--zai-anim-shimmer); }
+.zai-animate-gradient-shift { animation: var(--zai-anim-gradient-shift); }
+
+/* Float */
+.zai-animate-float        { animation: var(--zai-anim-float); }
+.zai-animate-float-gentle { animation: var(--zai-anim-float-gentle); }
+
+/* Neon */
+.zai-animate-neon-pulse   { animation: var(--zai-anim-neon-pulse); }
+.zai-animate-neon-flicker { animation: var(--zai-anim-neon-flicker); }
+.zai-animate-border-glow  { animation: var(--zai-anim-border-glow); }
+
+/* Spin */
+.zai-animate-spin         { animation: var(--zai-anim-spin); }
+
+/* Cursor */
+.zai-animate-cursor-blink { animation: var(--zai-anim-cursor-blink); }
+
+/* Bounce */
+.zai-animate-bounce       { animation: var(--zai-anim-bounce); }
+.zai-animate-shake        { animation: var(--zai-anim-shake); }
+
+/* Loading */
+.zai-animate-loading-ring { animation: var(--zai-anim-loading-ring); }
+.zai-animate-skeleton     { animation: var(--zai-anim-skeleton); background-size: 200% 100%; }
+
+/* Glitch */
+.zai-animate-glitch       { position: relative; }
+.zai-animate-glitch::before,
+.zai-animate-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.zai-animate-glitch::before { animation: var(--zai-anim-glitch-1); color: #0ff; z-index: -1; }
+.zai-animate-glitch::after  { animation: var(--zai-anim-glitch-2); color: #f0f; z-index: -2; }
+
+/* Marquee */
+.zai-animate-marquee      { animation: var(--zai-anim-marquee); display: inline-block; white-space: nowrap; }
+
+/* Ripple */
+.zai-animate-ripple       { animation: var(--zai-anim-ripple); }
+
+/* Divider */
+.zai-animate-divider      { animation: var(--zai-anim-divider-sweep); background-size: 200% 100%; }
+
+/* Stagger delays */
+.zai-stagger-1 { animation-delay: 0.06s; }
+.zai-stagger-2 { animation-delay: 0.12s; }
+.zai-stagger-3 { animation-delay: 0.18s; }
+.zai-stagger-4 { animation-delay: 0.24s; }
+.zai-stagger-5 { animation-delay: 0.30s; }
+.zai-stagger-6 { animation-delay: 0.36s; }
+.zai-stagger-7 { animation-delay: 0.42s; }
+.zai-stagger-8 { animation-delay: 0.48s; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   ACCESSIBILITY — prefers-reduced-motion
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .zai-animate-fade-in,
+  .zai-animate-fade-up,
+  .zai-animate-blur-reveal,
+  .zai-animate-scale-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .zai-animate-glitch::before,
+  .zai-animate-glitch::after {
+    display: none !important;
+  }
+
+  .zai-stagger-1, .zai-stagger-2, .zai-stagger-3, .zai-stagger-4,
+  .zai-stagger-5, .zai-stagger-6, .zai-stagger-7, .zai-stagger-8 {
+    animation-delay: 0s !important;
+  }
+}

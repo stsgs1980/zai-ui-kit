@@ -1,0 +1,89 @@
+/**
+ * @zai/ui-kit — Tokens: Syntax Highlighting
+ * Dracula-inspired code highlighting classes
+ * Harvested from Code-Realm
+ *
+ * Usage: import '@zai/ui-kit/tokens/syntax.css'
+ * Then: <span className="zai-syn-keyword">const</span>
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   SYNTAX TOKEN COLORS
+   ═══════════════════════════════════════════════════════════ */
+.zai-syn-keyword     { color: #ff79c6; }  /* if, else, return, const, let, function */
+.zai-syn-string      { color: #f1fa8c; }  /* "hello", 'world', `template` */
+.zai-syn-function    { color: #50fa7b; }  /* funcName, method() */
+.zai-syn-comment     { color: #6272a4; font-style: italic; }  /* // comment, /* block */ */
+.zai-syn-number      { color: #bd93f9; }  /* 42, 3.14, 0xFF */
+.zai-syn-type        { color: #8be9fd; }  /* string, number, boolean, interface */
+.zai-syn-operator    { color: #ff79c6; }  /* ===, &&, ||, => */
+.zai-syn-tag         { color: #ff79c6; }  /* <div>, <Component> */
+.zai-syn-attr        { color: #50fa7b; }  /* className=, href= */
+.zai-syn-value       { color: #f1fa8c; }  /* "text", true, null */
+.zai-syn-bracket     { color: #f8f8f2; }  /* {, }, (, ) */
+.zai-syn-property    { color: #66d9ef; }  /* obj.prop, config.key */
+.zai-syn-punctuation { color: #f8f8f2; }  /* ;, ,, ., : */
+.zai-syn-decorator   { color: #ff79c6; }  /* @decorator */
+
+/* ═══════════════════════════════════════════════════════════
+   CODE BLOCK STYLING
+   ═══════════════════════════════════════════════════════════ */
+.zai-code-block {
+  background: var(--zai-color-bg-tertiary, #1a1a24);
+  border: 1px solid var(--zai-color-border-subtle, rgba(92, 96, 112, 0.25));
+  border-radius: var(--zai-radius-lg, 8px);
+  padding: var(--zai-space-5, 20px) var(--zai-space-8, 32px);
+  font-family: var(--font-mono, 'Geist Mono', 'Fira Code', monospace);
+  font-size: var(--zai-font-size-2, 0.875rem);
+  line-height: var(--zai-line-height-relaxed, 1.75);
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+.zai-code-line-highlight {
+  border-left: 2px solid rgba(var(--zai-glow-color, 16, 185, 129), 0.6);
+  padding-left: var(--zai-space-2, 8px);
+  margin-left: calc(-1 * var(--zai-space-2, 8px));
+  background: rgba(var(--zai-glow-color, 16, 185, 129), 0.04);
+}
+
+/* Inline code */
+.zai-code-inline {
+  background: rgba(var(--zai-glow-color, 16, 185, 129), 0.08);
+  border: 1px solid rgba(var(--zai-glow-color, 16, 185, 129), 0.12);
+  border-radius: var(--zai-radius-sm, 2px);
+  padding: 1px 5px;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.9em;
+  color: var(--zai-color-text-secondary, #CCCCCC);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ALTERNATIVE SYNTAX THEMES (via CSS custom properties)
+   ═══════════════════════════════════════════════════════════ */
+
+/* One Dark theme override */
+.zai-syntax-one-dark .zai-syn-keyword   { color: #c678dd; }
+.zai-syntax-one-dark .zai-syn-string    { color: #98c379; }
+.zai-syntax-one-dark .zai-syn-function  { color: #61afef; }
+.zai-syntax-one-dark .zai-syn-comment   { color: #5c6370; }
+.zai-syntax-one-dark .zai-syn-number    { color: #d19a66; }
+.zai-syntax-one-dark .zai-syn-type      { color: #e5c07b; }
+.zai-syntax-one-dark .zai-syn-operator  { color: #56b6c2; }
+.zai-syntax-one-dark .zai-syn-tag       { color: #e06c75; }
+.zai-syntax-one-dark .zai-syn-attr      { color: #d19a66; }
+.zai-syntax-one-dark .zai-syn-property  { color: #e06c75; }
+
+/* Amber retro theme override */
+.zai-syntax-amber .zai-syn-keyword   { color: #d4a017; }
+.zai-syntax-amber .zai-syn-string    { color: #b8860b; }
+.zai-syntax-amber .zai-syn-function  { color: #f5f0e1; }
+.zai-syntax-amber .zai-syn-comment   { color: #6b6356; font-style: italic; }
+.zai-syntax-amber .zai-syn-number    { color: #c23616; }
+.zai-syntax-amber .zai-syn-type      { color: #2d6a4f; }
+.zai-syntax-amber .zai-syn-operator  { color: #d4a017; }
+.zai-syntax-amber .zai-syn-tag       { color: #d4a017; }
+.zai-syntax-amber .zai-syn-attr      { color: #b8860b; }
+.zai-syntax-amber .zai-syn-property  { color: #f5f0e1; }
+.zai-syntax-amber .zai-syn-bracket   { color: #6b6356; }
+.zai-syntax-amber .zai-syn-punctuation { color: #6b6356; }

@@ -1,0 +1,234 @@
+/**
+ * @zai/ui-kit — Skin: Amber Retro
+ * Warm amber/cream retro-terminal aesthetic from Code-Realm
+ * CREAM #f5f0e1, AMBER #d4a017, DARK_AMBER #b8860b
+ *
+ * Usage: import '@zai/ui-kit/skins/amber-retro.css'
+ */
+:root {
+  /* ── Neutral scale (amber-tinted) ────────────────────── */
+  --zai-color-neutral-base: #f5f0e1;
+  --zai-color-neutral-v1: #d4a017;
+  --zai-color-neutral-v2: #b8860b;
+  --zai-color-neutral-v3: #6b6356;
+  --zai-color-neutral-v4: #3d3832;
+
+  /* ── Semantic text ────────────────────────────────────── */
+  --zai-color-text-primary: #1a1a1a;
+  --zai-color-text-secondary: #3d3832;
+  --zai-color-text-muted: #6b6356;
+  --zai-color-text-disabled: #a39e93;
+  --zai-color-text-inverse: #f5f0e1;
+
+  /* ── Backgrounds ──────────────────────────────────────── */
+  --zai-color-bg-primary: #f5f0e1;
+  --zai-color-bg-secondary: #ece5d3;
+  --zai-color-bg-tertiary: #e2dac5;
+  --zai-color-bg-card: #ede6d5;
+  --zai-color-bg-elevated: #f0e9d8;
+  --zai-color-bg-surface: #e5dec8;
+  --zai-color-bg-overlay: rgba(26, 26, 26, 0.7);
+
+  /* ── Borders ──────────────────────────────────────────── */
+  --zai-color-border-default: #b8860b;
+  --zai-color-border-muted: rgba(184, 134, 11, 0.4);
+  --zai-color-border-subtle: rgba(184, 134, 11, 0.2);
+  --zai-color-border-focus: #d4a017;
+
+  /* ── Status ───────────────────────────────────────────── */
+  --zai-color-status-online: #2d6a4f;
+  --zai-color-status-offline: #6b6356;
+  --zai-color-status-warning: #d4a017;
+  --zai-color-status-error: #c23616;
+  --zai-color-status-success: #2d6a4f;
+  --zai-color-status-info: #b8860b;
+
+  /* ── Accent (amber) ───────────────────────────────────── */
+  --zai-color-accent: #d4a017;
+  --zai-color-accent-muted: rgba(212, 160, 23, 0.15);
+
+  /* ── Fibonacci spacing (same as dark-zai) ─────────────── */
+  --zai-space-0: 0;
+  --zai-space-1: 4px;
+  --zai-space-2: 8px;
+  --zai-space-3: 12px;
+  --zai-space-5: 20px;
+  --zai-space-8: 32px;
+  --zai-space-13: 52px;
+  --zai-space-21: 84px;
+  --zai-space-card-sm: var(--zai-space-3);
+  --zai-space-card-md: var(--zai-space-5);
+  --zai-space-card-lg: var(--zai-space-8);
+  --zai-space-section-sm: var(--zai-space-5);
+  --zai-space-section-md: var(--zai-space-8);
+  --zai-space-section-lg: var(--zai-space-13);
+  --zai-space-element-xs: var(--zai-space-1);
+  --zai-space-element-sm: var(--zai-space-2);
+  --zai-space-element-md: var(--zai-space-3);
+  --zai-space-element-lg: var(--zai-space-5);
+
+  /* ── Radius ───────────────────────────────────────────── */
+  --zai-radius-none: 0;
+  --zai-radius-sm: 2px;
+  --zai-radius-default: 4px;
+  --zai-radius-md: 6px;
+  --zai-radius-lg: 8px;
+  --zai-radius-xl: 12px;
+  --zai-radius-full: 9999px;
+
+  /* ── Shadows (warm-tinted) ────────────────────────────── */
+  --zai-shadow-sm: 0 1px 2px 0 rgba(107, 99, 86, 0.15);
+  --zai-shadow-default: 0 1px 3px 0 rgba(107, 99, 86, 0.2), 0 1px 2px -1px rgba(107, 99, 86, 0.15);
+  --zai-shadow-md: 0 4px 6px -1px rgba(107, 99, 86, 0.2), 0 2px 4px -2px rgba(107, 99, 86, 0.15);
+  --zai-shadow-lg: 0 10px 15px -3px rgba(107, 99, 86, 0.25), 0 4px 6px -4px rgba(107, 99, 86, 0.2);
+  --zai-shadow-xl: 0 20px 25px -5px rgba(107, 99, 86, 0.3), 0 8px 10px -6px rgba(107, 99, 86, 0.2);
+  --zai-shadow-glow: 0 0 20px rgba(212, 160, 23, 0.3);
+
+  /* ── Glass effects (warm) ─────────────────────────────── */
+  --zai-glass-bg: rgba(245, 240, 225, 0.8);
+  --zai-glass-border: rgba(184, 134, 11, 0.15);
+  --zai-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 24px rgba(107, 99, 86, 0.15);
+  --zai-glass-blur: 16px;
+  --zai-glass-saturate: 1.3;
+  --zai-glass-opacity: 0.8;
+
+  /* ── Glow effects (amber) ─────────────────────────────── */
+  --zai-glow-color: 212, 160, 23;
+  --zai-glow-spread: 20px;
+  --zai-glow-opacity: 0.3;
+  --zai-glow-shadow: 0 0 var(--zai-glow-spread) rgba(var(--zai-glow-color), var(--zai-glow-opacity));
+
+  /* ── Motion (same as dark-zai) ────────────────────────── */
+  --zai-duration-instant: 0ms;
+  --zai-duration-fast: 150ms;
+  --zai-duration-normal: 300ms;
+  --zai-duration-slow: 500ms;
+  --zai-easing-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --zai-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --zai-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --zai-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --zai-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ── Typography ───────────────────────────────────────── */
+  --zai-font-size-1: 0.75rem;
+  --zai-font-size-2: 0.875rem;
+  --zai-font-size-3: 1rem;
+  --zai-font-size-4: 1.125rem;
+  --zai-font-size-5: 1.5rem;
+  --zai-font-size-6: 2rem;
+  --zai-font-size-7: 3rem;
+  --zai-font-weight-normal: 400;
+  --zai-font-weight-medium: 500;
+  --zai-font-weight-semibold: 600;
+  --zai-font-weight-bold: 700;
+  --zai-line-height-tight: 1.25;
+  --zai-line-height-normal: 1.5;
+  --zai-line-height-relaxed: 1.75;
+
+  /* ── Layout: Parametric Dimensions ──────────────────── */
+  --zai-sidebar-w: 50px;
+  --zai-sidebar-xl: 70px;
+  --zai-header-h: 35px;
+  --zai-footer-h: 25px;
+  --zai-hero-h: 80px;
+  --zai-card-min: 50px;
+
+  /* ── Layout: Column Templates ────────────────────────── */
+  --zai-cols-equal-2: 1fr 1fr;
+  --zai-cols-equal-3: repeat(3, 1fr);
+  --zai-cols-equal-4: repeat(4, 1fr);
+  --zai-cols-equal-5: repeat(5, 1fr);
+  --zai-cols-equal-6: repeat(6, 1fr);
+  --zai-cols-equal-8: repeat(8, 1fr);
+  --zai-cols-fib-4: 1fr 2fr 3fr 5fr;
+  --zai-cols-fib-5: 1fr 1fr 2fr 3fr 5fr;
+  --zai-cols-fib-3rev: 8fr 5fr 3fr;
+  --zai-cols-fib-4rev: 5fr 3fr 2fr 1fr;
+  --zai-cols-golden: 1fr 1.618fr;
+  --zai-cols-prime-4: 2fr 3fr 5fr 7fr;
+  --zai-cols-sqrt: 1fr 1.414fr 1.732fr 2fr;
+  --zai-cols-root2: 1.414fr 1fr;
+  --zai-cols-harmonic: 1fr 0.5fr 0.333fr 0.25fr;
+  --zai-cols-2-1-1: 2fr 1fr 1fr;
+  --zai-cols-hero: 2fr 1fr;
+  --zai-cols-sidebar-l: var(--zai-sidebar-w) 1fr;
+  --zai-cols-sidebar-r: 1fr var(--zai-sidebar-w);
+  --zai-cols-sidebar-xl: var(--zai-sidebar-xl) 1fr;
+  --zai-cols-holy-grail: var(--zai-sidebar-w) 1fr var(--zai-sidebar-w);
+  --zai-cols-holy-grail-fib: 3fr 13fr 5fr;
+  --zai-cols-auto-fit: repeat(auto-fit, minmax(var(--zai-card-min), 1fr));
+  --zai-cols-spiral: 34fr 21fr 13fr 8fr 5fr 3fr 2fr 1fr;
+  --zai-cols-phi-12: repeat(12, 1fr);
+  --zai-cols-timeline: 3.82fr 1fr 5.18fr;
+  --zai-cols-zeitgeist: 1fr 1.618fr 1fr;
+  --zai-cols-dyn-sym: 1fr 2.236fr;
+  --zai-cols-golden-inv: 1.618fr 1fr;
+  --zai-cols-dashboard: 3fr 5fr 2fr;
+  --zai-cols-magazine: 5fr 3fr 2fr;
+
+  /* ── Layout: Row Templates ───────────────────────────── */
+  --zai-rows-header-content-footer: var(--zai-header-h) 1fr var(--zai-footer-h);
+  --zai-rows-header-content: var(--zai-header-h) 1fr;
+  --zai-rows-hero-content: 2fr 1fr;
+  --zai-rows-hero-grid: var(--zai-hero-h) 1fr;
+  --zai-rows-equal-2: repeat(2, 1fr);
+  --zai-rows-equal-3: repeat(3, 1fr);
+  --zai-rows-equal-4: repeat(4, 1fr);
+  --zai-rows-equal-5: repeat(5, 1fr);
+  --zai-rows-fib-3: 8fr 5fr 3fr;
+  --zai-rows-fib-4: 1fr 2fr 3fr 5fr;
+  --zai-rows-fib-4rev: 5fr 3fr 2fr 1fr;
+  --zai-rows-golden: 1fr 1.618fr;
+  --zai-rows-golden-inv: 1.618fr 1fr;
+  --zai-rows-magazine: var(--zai-header-h) repeat(2, 1fr) var(--zai-footer-h);
+  --zai-rows-spiral: 34fr 21fr 13fr;
+  --zai-rows-dashboard: auto 1fr 1.618fr;
+  --zai-rows-dyn-sym: 1fr 2.236fr;
+  --zai-rows-timeline: 3.82fr 1fr 5.18fr;
+  --zai-rows-zeitgeist: 1fr 1.618fr 1fr;
+  --zai-rows-sacred: 1fr 1.618fr 1fr;
+
+  /* ── Layout: Gap Scale ───────────────────────────────── */
+  --zai-gap-none: 0;
+  --zai-gap-xs: var(--zai-space-1);
+  --zai-gap-sm: var(--zai-space-2);
+  --zai-gap-md: var(--zai-space-3);
+  --zai-gap-lg: var(--zai-space-5);
+  --zai-gap-xl: 2.5rem;
+  --zai-gap-2xl: 4rem;
+  --zai-gap-3xl: 6.5rem;
+
+  /* ── Layout: Auto Props ──────────────────────────────── */
+  --zai-auto-rows-sm: var(--zai-space-5);
+  --zai-auto-rows-md: var(--zai-space-8);
+  --zai-auto-rows-equal: 1fr;
+
+  /* ── Layout: Constants ───────────────────────────────── */
+  --zai-phi: 1.618;
+  --zai-phi-inv: 0.618;
+
+  /* ── DEPRECATED ── */
+  --zai-grid-cols-golden: var(--zai-cols-golden);
+  --zai-grid-cols-fibonacci: var(--zai-cols-fib-4);
+  --zai-grid-gap: var(--zai-gap-lg);
+  --zai-grid-gap-sm: var(--zai-gap-md);
+  --zai-grid-gap-lg: var(--zai-gap-lg);
+
+  /* ── Z-index ──────────────────────────────────────────── */
+  --zai-z-dropdown: 1000;
+  --zai-z-sticky: 1020;
+  --zai-z-fixed: 1030;
+  --zai-z-modal: 1050;
+  --zai-z-popover: 1060;
+  --zai-z-tooltip: 1070;
+  --zai-z-toast: 1080;
+
+  /* ── Component-specific ───────────────────────────────── */
+  --zai-progress-height: 6px;
+  --zai-progress-radius: var(--zai-radius-full);
+  --zai-badge-padding-x: var(--zai-space-2);
+  --zai-badge-padding-y: var(--zai-space-1);
+  --zai-badge-radius: var(--zai-radius-full);
+  --zai-dot-size: 8px;
+  --zai-divider-thickness: 1px;
+}
