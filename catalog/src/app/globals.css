@@ -1,0 +1,60 @@
+/**
+ * ZAI UI Kit Catalog — Global Styles
+ * Imports the dark-zai skin to activate CSS custom property tokens
+ */
+
+@import '../../../src/skins/dark-zai.css';
+
+/* ── Base resets & defaults ────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--zai-color-bg-primary);
+  color: var(--zai-color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: var(--zai-line-height-normal);
+}
+
+/* ── CSS custom property fallback: BRAND constants → token vars ── */
+:root {
+  /* Map BRAND constant names to CSS token vars for gradual migration */
+  --zai-brand-base: var(--zai-color-neutral-base);
+  --zai-brand-v1: var(--zai-color-neutral-v1);
+  --zai-brand-v2: var(--zai-color-neutral-v2);
+  --zai-brand-v3: var(--zai-color-neutral-v3);
+  --zai-brand-v4: var(--zai-color-neutral-v4);
+  --zai-brand-bg: var(--zai-color-bg-primary);
+  --zai-brand-bg-card: var(--zai-color-bg-card);
+  --zai-brand-bg-elevated: var(--zai-color-bg-elevated);
+  --zai-brand-bg-surface: var(--zai-color-bg-surface);
+}
+
+/* ── Scrollbar styling ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--zai-color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--zai-color-border-muted);
+  border-radius: var(--zai-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--zai-color-border-default);
+}

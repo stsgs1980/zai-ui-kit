@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { BRAND, CATEGORIES, PATTERNS } from '../data/layout-data'
+import { BRAND, CATEGORIES, PATTERNS, type LayoutCategory } from '../data/layout-data'
 import { useCatalogFilters } from '../hooks'
 import { CatalogHeader, CatalogTabs, PatternCard } from '../ui'
 import { AtomsTab } from '../sections/AtomsTab'
@@ -70,8 +70,8 @@ export default function CatalogPage() {
 function FilterBar({ search, onSearchChange, category, onCategoryChange }: {
   search: string
   onSearchChange: (v: string) => void
-  category: string
-  onCategoryChange: (v: string) => void
+  category: LayoutCategory | 'all'
+  onCategoryChange: (v: LayoutCategory | 'all') => void
 }) {
   return (
     <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', alignItems: 'center' }}>
