@@ -2,6 +2,28 @@
 
 Production-ready React UI components for dashboards and monitoring interfaces.
 
+
+[![React](https://img.shields.io/badge/React-61DAFB?style=flat-square)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square)](https://www.typescriptlang.org)
+[![Tailwind_CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square)](https://tailwindcss.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [or](#or)
+- [or](#or)
+- [Peer Dependencies](#peer-dependencies)
+- [Quick Start](#quick-start)
+- [Components](#components)
+- [Theme System](#theme-system)
+- [Utilities](#utilities)
+- [License](#license)
+- [Getting Started](#getting-started)
+
 ## Features
 
 - **Dark theme optimized** - Designed for dark backgrounds with glow effects
@@ -10,14 +32,19 @@ Production-ready React UI components for dashboards and monitoring interfaces.
 - **Zero dependencies** - Only peer dependencies (React, Tailwind CSS)
 - **Composable** - Build complex UIs from simple primitives
 
+## Tech Stack
+
+- **Language** - TypeScript
+- **Styling** - Tailwind CSS, CSS
+- **Tools** - React
+
 ## Installation
 
 ```bash
-npm install github:stsgs1980/zai-ui-kit
-# or
-pnpm add github:stsgs1980/zai-ui-kit
-# or
-yarn add github:stsgs1980/zai-ui-kit
+bun install github:stsgs1980/zai-ui-kit
+## add github:stsgs1980/zai-ui-kit
+## or
+bun add github:stsgs1980/zai-ui-kit
 ```
 
 ## Peer Dependencies
@@ -140,6 +167,29 @@ const className = cn(
 
 MIT
 
----
 
 **Document complies with No-Unicode Policy v2.1**
+
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+ or Bun
+
+### Installation
+
+```bash
+git clone https://github.com/stsgs1980/Zai-ui-kit.git
+cd Zai-ui-kit
+bun install
+```
+
+### Run
+
+```bash
+bun run dev
+```
+
+---
+Built with: React + TypeScript + Tailwind CSS + CSS
